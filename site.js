@@ -177,15 +177,26 @@
   }
 
   // ── Formulaire de contact ────────────────────────────────────────────────
+  // Le formulaire poste vers un Worker Cloudflare (voir 04_SCRIPTS/brevo-worker/)
+  // qui relaie l'e-mail via l'API Brevo. La clé API Brevo reste côté serveur
+  // (secret du Worker) — jamais exposée dans ce fichier ni dans le navigateur.
+  var CONTACT_ENDPOINT = 'https://aufildutrace-contact.CHANGEME.workers.dev';
+
   function initForm() {
     var form = document.querySelector('[data-contact-form]');
     if (!form) return;
     var sentBlock = document.querySelector('[data-form-sent]');
+    var errorBlock = form.querySelector('[data-form-error]');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var submitLabel = submitBtn ? submitBtn.textContent : '';
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var prenom = form.querySelector('[name="prenom"]');
       var email = form.querySelector('[name="email"]');
+      var telephone = form.querySelector('[name="telephone"]');
       var message = form.querySelector('[name="message"]');
+      var honeypot = form.querySelector('[name="site_web"]');
       var errors = {};
       if (!prenom.value.trim()) errors.prenom = 'Merci d’indiquer votre prénom.';
       if (!email.value.trim()) errors.email = 'Merci d’indiquer votre e-mail.';
@@ -205,10 +216,40 @@
       });
       if (Object.keys(errors).length) return;
 
-      // TODO (tâche « Brancher et tester le formulaire Brevo ») : remplacer
-      // ce bloc par l'appel réel à l'API Brevo une fois la clé configurée.
-      form.hidden = true;
-      if (sentBlock) sentBlock.hidden = false;
+      if (errorBlock) errorBlock.hidden = true;
+
+      // Piège anti-spam : si ce champ caché est rempli, c'est un robot —
+      // on affiche quand même le message de succès pour ne pas l'alerter,
+      // mais on n'envoie rien à Brevo.
+      if (honeypot && honeypot.value.trim()) {
+        form.hidden = true;
+        if (sentBlock) sentBlock.hidden = false;
+        return;
+      }
+
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Envoi en cours…'; }
+
+      fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prenom: prenom.value.trim(),
+          email: email.value.trim(),
+          telephone: telephone ? telephone.value.trim() : '',
+          message: message.value.trim()
+        })
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('Réponse serveur ' + res.status);
+          form.hidden = true;
+          if (sentBlock) sentBlock.hidden = false;
+        })
+        .catch(function () {
+          if (errorBlock) errorBlock.hidden = false;
+        })
+        .finally(function () {
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = submitLabel; }
+        });
     });
   }
 

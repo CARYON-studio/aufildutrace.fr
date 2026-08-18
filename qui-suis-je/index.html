@@ -54,9 +54,9 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
 [data-hv="hv5"]:hover{color:var(--olive);border-bottom-color:var(--terre)}
 [data-hv="hv6"]:hover{color:var(--olive);border-bottom-color:var(--terre)}
 [data-hv="hv7"]:hover{background:#5C3B3D;transform:translateY(-1px);box-shadow:0 10px 22px rgba(107,69,72,0.26),0 0 0 3px rgba(203,153,126,0.28)}
-[data-hv="hv8"]:hover{background:#5C3B3D;transform:translateY(-1px);box-shadow:0 10px 22px rgba(107,69,72,0.26),0 0 0 3px rgba(203,153,126,0.28)}
-[data-hv="hv9"]:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
-[data-hv="hv10"]:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+[data-hv="hv8"]:hover{transform:rotate(3deg)}
+[data-hv="hv9"]:hover{transform:rotate(183deg)}
+[data-hv="hv10"]:hover{background:#5C3B3D;transform:translateY(-1px);box-shadow:0 10px 22px rgba(107,69,72,0.26),0 0 0 3px rgba(203,153,126,0.28)}
 [data-hv="hv11"]:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
 [data-hv="hv12"]:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
 [data-hv="hv13"]:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
@@ -65,6 +65,8 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
 [data-hv="hv16"]:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
 [data-hv="hv17"]:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
 [data-hv="hv18"]:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+[data-hv="hv19"]:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+[data-hv="hv20"]:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
 </style>
 </head>
 <body data-anim="on" data-sprigs="on" data-contraste="off">
@@ -107,10 +109,30 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
   <!-- ═══════════ PAGE PRÉSENTATION ═══════════ -->
   
   <div data-screen-label="Présentation">
-    <section style="background:linear-gradient(180deg,var(--peche) 0%,var(--creme) 100%);padding:clamp(48px,7vw,80px) clamp(16px,5vw,56px) clamp(40px,5vw,60px);text-align:center">
+    <section style="background:linear-gradient(180deg,var(--peche) 0%,var(--creme) 100%);padding:clamp(48px,7vw,80px) clamp(16px,5vw,56px) clamp(40px,5vw,60px);text-align:center;overflow:visible">
       <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--second);font-weight:600;margin-bottom:14px">Qui suis-je ?</span>
       <h1 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:clamp(30px,4.4vw,46px);line-height:1.15;max-width:760px;margin:0 auto 16px">Béatrice Gouts Bourjac, graphothérapeute</h1>
       <p style="font-size:clamp(16px,2vw,18px);color:var(--second);max-width:640px;margin:0 auto">Un parcours au croisement de l'accompagnement, des sciences de l'éducation et de l'expérience de terrain auprès de personnes en situation de handicap.</p>
+      <div style="position:relative;display:inline-block;margin-top:clamp(32px,5vw,48px);transition-delay:.1s" data-reveal="">
+        <div style="position:absolute;inset:-16px -16px 24px -16px;border:1.5px solid var(--rose);border-radius:200px 200px 26px 26px;animation:archIn 1.1s cubic-bezier(.16,.84,.3,1) .55s both"></div>
+        <div style="position:relative;width:clamp(220px,26vw,300px);aspect-ratio:0.79;border-radius:999px 999px 18px 18px;overflow:hidden;box-shadow:0 26px 60px rgba(61,90,62,0.14);background:linear-gradient(165deg,var(--peche) 0%,#f3e2d2 55%,var(--rose) 130%);margin:0 auto">
+          
+            <div role="img" aria-label="Béatrice Gouts Bourjac, graphothérapeute" style="width:100%;height:100%;background-image:url('/img/beatrice-portrait.jpg');background-size:cover;background-position:50% 28%"></div>
+          
+          
+        </div>
+        <svg data-sprig="" style="position:absolute;top:-22px;right:-24px;width:74px;color:var(--terre);opacity:.85;transform-origin:8% 92%;transition:transform .5s cubic-bezier(.16,.84,.3,1)" data-hv="hv8" sc-camel-view-box="0 0 120 80" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <path data-trace="" d="M8 72 C 40 64, 78 40, 110 8" sc-camel-path-length="1" stroke-dasharray="1" stroke-dashoffset="0"></path>
+          <path data-trace="" data-trace-late="" d="M44 50 q -16 -4 -22 -22 q 20 2 22 22Z" fill="currentColor" stroke="none" opacity="0.55"></path>
+          <path data-trace="" data-trace-late="" d="M66 34 q -14 -6 -18 -24 q 18 4 18 24Z" fill="currentColor" stroke="none" opacity="0.55"></path>
+          <path data-trace="" data-trace-late="" d="M88 20 q -12 -6 -14 -22 q 16 4 14 22Z" fill="currentColor" stroke="none" opacity="0.55"></path>
+        </svg>
+        <svg data-sprig="" style="position:absolute;bottom:-20px;left:-22px;width:60px;color:var(--sauge);opacity:.8;transform:rotate(180deg);transform-origin:8% 92%;transition:transform .5s cubic-bezier(.16,.84,.3,1)" data-hv="hv9" sc-camel-view-box="0 0 120 80" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <path data-trace="" d="M8 72 C 40 64, 78 40, 110 8" sc-camel-path-length="1" stroke-dasharray="1" stroke-dashoffset="0"></path>
+          <path data-trace="" data-trace-late="" d="M44 50 q -16 -4 -22 -22 q 20 2 22 22Z" fill="currentColor" stroke="none" opacity="0.5"></path>
+          <path data-trace="" data-trace-late="" d="M70 32 q -13 -6 -16 -23 q 17 4 16 23Z" fill="currentColor" stroke="none" opacity="0.5"></path>
+        </svg>
+      </div>
     </section>
     <section style="max-width:900px;margin:0 auto;padding:clamp(36px,5vw,56px) clamp(16px,5vw,56px)">
       <div style="display:flex;flex-direction:column;gap:26px;font-size:16.5px;color:var(--corps)">
@@ -173,7 +195,20 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
               <h3 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:17.5px;margin-bottom:6px">Psychologie de l’adolescent</h3>
               <p style="font-size:14px;color:var(--second)">Formation certifiante, pour mieux accompagner cette période charnière.</p>
             </div>
-          
+
+            <div data-reveal="" style="background:var(--creme);border-radius:16px;padding:22px 24px;box-shadow:0 10px 26px rgba(107,112,92,0.08)">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--peche);margin-bottom:12px">
+                <svg sc-camel-view-box="0 0 32 32" width="26" height="26" fill="none" style="color:var(--olive);display:block" aria-hidden="true">
+                  <path data-trace="" d="M3.5 9 C 8 6.5 13 7 16 9.6 C 19 7 24 6.5 28.5 9 L 28.5 24 C 24 21.6 19 22.1 16 24.6 C 13 22.1 8 21.6 3.5 24 Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" sc-camel-path-length="1" stroke-dasharray="1" stroke-dashoffset="0"></path>
+
+                    <path data-trace="" data-trace-late="" d="M16 9.6 L 16 24.6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" sc-camel-path-length="1" stroke-dasharray="1" stroke-dashoffset="0"></path>
+
+                </svg>
+              </span>
+              <h3 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:17.5px;margin-bottom:6px">Graphothérapeute certifiée CNPG</h3>
+              <p style="font-size:14px;color:var(--second)">Certification délivrée par le CNPG (Collège National des Praticiens en Graphothérapie).</p>
+            </div>
+
         </div>
       </div>
     </section>
@@ -185,7 +220,7 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
         <div data-reveal="">
           <h2 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:clamp(24px,3.4vw,34px);margin-bottom:14px">Un travail en réseau, jamais isolé</h2>
           <p style="font-size:16px;color:var(--second);max-width:520px;margin-bottom:26px">J'inscris ma pratique dans une collaboration avec les professionnels qui entourent la personne accompagnée — famille, orthophoniste, ergothérapeute, psychomotricien, enseignant, médecin — dans le respect des compétences de chacun.</p>
-          <a href="../contact/index.html" style="display:inline-flex;align-items:center;gap:10px;background:var(--brun);color:#fff;text-decoration:none;padding:14px 30px;border-radius:34px;font-size:15px;font-weight:600;box-shadow:0 8px 22px rgba(107,69,72,0.32);cursor:pointer;transition:background .32s cubic-bezier(.33,0,.2,1),transform .32s cubic-bezier(.33,0,.2,1),box-shadow .32s cubic-bezier(.33,0,.2,1)" data-hv="hv8">Posez-moi une question →</a>
+          <a href="../contact/index.html" style="display:inline-flex;align-items:center;gap:10px;background:var(--brun);color:#fff;text-decoration:none;padding:14px 30px;border-radius:34px;font-size:15px;font-weight:600;box-shadow:0 8px 22px rgba(107,69,72,0.32);cursor:pointer;transition:background .32s cubic-bezier(.33,0,.2,1),transform .32s cubic-bezier(.33,0,.2,1),box-shadow .32s cubic-bezier(.33,0,.2,1)" data-hv="hv10">Posez-moi une question →</a>
         </div>
       </div>
     </section>
@@ -228,28 +263,28 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
         <div style="display:flex;flex-direction:column;gap:4px;font-size:15px">
           <p style="color:#d6d3c8">Corme-Écluse (17600)</p>
           <p style="color:#b8b5aa;font-size:13.5px;line-height:1.6;max-width:280px">Séances à domicile et en établissement — secteur Saintes, Gémozac, Pons et alentours (rayon 30 min autour de Corme-Écluse — 17).</p>
-          <a href="tel:0782110029" style="color:#d6d3c8;text-decoration:none;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv9">07 82 11 00 29</a>
-          <a href="mailto:aufildutrace@gmail.com" style="color:#d6d3c8;text-decoration:none;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv10">aufildutrace@gmail.com</a>
+          <a href="tel:0782110029" style="color:#d6d3c8;text-decoration:none;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv11">07 82 11 00 29</a>
+          <a href="mailto:aufildutrace@gmail.com" style="color:#d6d3c8;text-decoration:none;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv12">aufildutrace@gmail.com</a>
         </div>
       </div>
       <div>
         <h3 style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);margin-bottom:18px;font-weight:600">Le site</h3>
         <div style="display:flex;flex-direction:column;gap:4px;font-size:15px">
           
-            <a href="../index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv11">Accueil</a>
+            <a href="../index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv13">Accueil</a>
           
-            <a href="../qui-suis-je/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv12">Qui suis-je ?</a>
+            <a href="../qui-suis-je/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv14">Qui suis-je ?</a>
           
-            <a href="../prestations/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv13">Prestations</a>
+            <a href="../prestations/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv15">Prestations</a>
           
-            <a href="../exercices/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv14">Exercices</a>
+            <a href="../exercices/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv16">Exercices</a>
           
-            <a href="../le-coin-des-curieux/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv15">Le coin des curieux</a>
+            <a href="../le-coin-des-curieux/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv17">Le coin des curieux</a>
           
-            <a href="../faq/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv16">FAQ</a>
+            <a href="../faq/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv18">FAQ</a>
           
-          <a href="../mentions-legales/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv17">Mentions légales</a>
-          <a href="../politique-de-confidentialite/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv18">Politique de confidentialité</a>
+          <a href="../mentions-legales/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv19">Mentions légales</a>
+          <a href="../politique-de-confidentialite/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv20">Politique de confidentialité</a>
         </div>
       </div>
     </div>
