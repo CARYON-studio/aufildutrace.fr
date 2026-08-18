@@ -82,7 +82,7 @@
       var i = Number(el.dataset.trIdx || 0);
       el.style.animation = 'inkIn .5s ease ' + (0.95 + i * 0.12).toFixed(2) + 's both';
     } else {
-      el.style.animation = 'traceUnit 1.1s cubic-bezier(.22,.7,.25,1) ' + (late ? '.85s' : '.1s') + ' both';
+      el.style.animation = 'traceUnit 1.8s cubic-bezier(.22,.7,.25,1) ' + (late ? '1.1s' : '.15s') + ' both';
     }
   }
 
