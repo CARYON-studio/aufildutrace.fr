@@ -176,6 +176,35 @@
     });
   }
 
+  // ── Accordéon Articles (Coin des curieux) ───────────────────────────────
+  // Même mécanique que l'accordéon FAQ ci-dessus, avec ses propres attributs
+  // data-article-* pour ne jamais interférer avec la FAQ.
+  function initArticles() {
+    var items = document.querySelectorAll('[data-article-item]');
+    items.forEach(function (item) {
+      var btn = item.querySelector('[data-article-toggle]');
+      var panel = item.querySelector('[data-article-panel]');
+      var chev = item.querySelector('[data-article-chevron]');
+      if (!btn || !panel) return;
+      btn.addEventListener('click', function () {
+        var isOpen = item.getAttribute('data-open') === 'true';
+        document.querySelectorAll('[data-article-item][data-open="true"]').forEach(function (other) {
+          if (other !== item) {
+            other.setAttribute('data-open', 'false');
+            other.querySelector('[data-article-panel]').hidden = true;
+            other.style.borderColor = 'var(--bordure)';
+            var oc = other.querySelector('[data-article-chevron]');
+            if (oc) oc.style.transform = 'rotate(0deg)';
+          }
+        });
+        item.setAttribute('data-open', isOpen ? 'false' : 'true');
+        panel.hidden = isOpen;
+        item.style.borderColor = isOpen ? 'var(--bordure)' : '#DDBEA9';
+        if (chev) chev.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(45deg)';
+      });
+    });
+  }
+
   // ── Formulaire de contact ────────────────────────────────────────────────
   // Le formulaire poste vers un Worker Cloudflare (voir 04_SCRIPTS/brevo-worker/)
   // qui relaie l'e-mail via l'API Brevo. La clé API Brevo reste côté serveur
@@ -256,6 +285,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     scheduleReveals();
     initFaq();
+    initArticles();
     initForm();
   });
 })();

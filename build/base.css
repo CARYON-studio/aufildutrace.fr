@@ -1,0 +1,34 @@
+*{box-sizing:border-box;margin:0;padding:0}
+html{color-scheme:light;scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#FDFAF6;color:#2E3025;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;
+  --creme:#FDFAF6;--peche:#FFE8D6;--rose:#DDBEA9;--terre:#CB997E;--sauge:#A5A58D;--kaki:#6B705C;--olive:#3D5A3E;--corps:#2E3025;--second:#4A5040;--brun:#6B4548;--brunh:#583A3C;--bordure:#f0e7da;--terref:#A9714E}
+body[data-contraste="on"]{font-size:18.5px;--second:#3A4033;--corps:#22241B;--sauge:#6B705C}
+body[data-sprigs="off"] [data-sprig]{display:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes traceOn{to{stroke-dashoffset:0}}
+@keyframes traceFrom{from{stroke-dashoffset:320}to{stroke-dashoffset:0}}
+@keyframes traceUnit{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes traitX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes inkIn{from{opacity:0}}
+@keyframes archIn{from{opacity:0;transform:scale(.975)}to{opacity:1;transform:none}}
+body[data-anim="off"] *{animation:none !important}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+input::placeholder,textarea::placeholder{color:var(--sauge)}
+a{transition:color .3s cubic-bezier(.33,0,.2,1),background-color .3s cubic-bezier(.33,0,.2,1),border-color .3s cubic-bezier(.33,0,.2,1),box-shadow .3s cubic-bezier(.33,0,.2,1),transform .3s cubic-bezier(.33,0,.2,1)}
+a:hover{color:#3D5A3E}
+button{transition:background-color .3s cubic-bezier(.33,0,.2,1),color .3s cubic-bezier(.33,0,.2,1),border-color .3s cubic-bezier(.33,0,.2,1),box-shadow .3s cubic-bezier(.33,0,.2,1),transform .3s cubic-bezier(.33,0,.2,1)}
+html{scrollbar-width:thin;scrollbar-color:#CB997E #F2E8DC}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:#F2E8DC}
+::-webkit-scrollbar-thumb{background:#CB997E;border-radius:10px;border:3px solid #F2E8DC;transition:background .2s ease}
+::-webkit-scrollbar-thumb:hover{background:#6B4548}
+::-webkit-scrollbar-corner{background:#F2E8DC}
+input:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #6B4548;outline-offset:2px}
+footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+/* Fix 18/08/2026 : les 3 blocs de réassurance accueil se désalignaient (2+1)
+   dans un conteneur de 880px avec auto-fit/minmax(280px). Portée ici dans
+   base.css (source) -- avant, seul le HTML déjà généré avait été patché à la
+   main, donc perdue à chaque régénération depuis template.html. */
+.reassurance-grid{display:grid;grid-template-columns:1fr;gap:clamp(24px,4vw,36px)}
+@media (min-width:760px){.reassurance-grid{grid-template-columns:repeat(3,1fr);gap:28px}}

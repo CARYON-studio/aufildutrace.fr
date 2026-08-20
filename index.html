@@ -46,6 +46,10 @@ html{scrollbar-width:thin;scrollbar-color:#CB997E #F2E8DC}
 ::-webkit-scrollbar-corner{background:#F2E8DC}
 input:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #6B4548;outline-offset:2px}
 footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+/* Fix 18/08/2026 : les 3 blocs de réassurance accueil se désalignaient (2+1)
+   dans un conteneur de 880px avec auto-fit/minmax(280px). Portée ici dans
+   base.css (source) -- avant, seul le HTML déjà généré avait été patché à la
+   main, donc perdue à chaque régénération depuis template.html. */
 .reassurance-grid{display:grid;grid-template-columns:1fr;gap:clamp(24px,4vw,36px)}
 @media (min-width:760px){.reassurance-grid{grid-template-columns:repeat(3,1fr);gap:28px}}
 
@@ -181,16 +185,29 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
     <section style="background:var(--creme);border-bottom:1px solid #f2eadf">
       <div class="reassurance-grid" style="max-width:960px;margin:0 auto;padding:clamp(38px,5vw,54px) clamp(16px,5vw,56px)">
         <div data-reveal="" style="display:flex;gap:20px;align-items:flex-start">
-          <span style="width:58px;height:58px;flex-shrink:0;border-radius:50%;background:var(--peche);display:flex;align-items:center;justify-content:center;font-family:'Source Serif 4',serif;color:var(--brun);font-size:25px">7</span>
+          <span style="width:58px;height:58px;flex-shrink:0;border-radius:50%;background:var(--peche);display:flex;align-items:center;justify-content:center">
+            <svg viewBox="0 0 32 32" width="30" height="30" fill="none" style="color:var(--olive);display:block" aria-hidden="true">
+              <path data-trace="" d="M9 27.5 L 9 17.2 C 9 14.4 12.2 14 13.2 16 L 13.2 10.4 C 13.2 7.8 16.6 7.8 16.6 10.4 L 16.6 14.4 L 16.6 8.6 C 16.6 6 20 6 20 8.6 L 20 14.4 L 20 10.8 C 20 8.2 23.4 8.2 23.4 10.8 L 23.4 19.4 C 23.4 24.4 20 27.5 16.4 27.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="0"></path>
+            </svg>
+          </span>
           <p style="font-size:17px;color:var(--second);padding-top:8px"><strong style="color:var(--corps);font-size:19px;display:block;margin-bottom:4px">7 ans d'expérience</strong>auprès de personnes en situation de handicap, au quotidien.</p>
         </div>
         <div data-reveal="" style="display:flex;gap:20px;align-items:flex-start">
-          <span style="width:58px;height:58px;flex-shrink:0;border-radius:50%;background:var(--peche);display:flex;align-items:center;justify-content:center;font-family:'Source Serif 4',serif;color:var(--brun);font-size:25px">✓</span>
+          <span style="width:58px;height:58px;flex-shrink:0;border-radius:50%;background:var(--peche);display:flex;align-items:center;justify-content:center">
+            <svg viewBox="0 0 32 32" width="30" height="30" fill="none" style="color:var(--olive);display:block" aria-hidden="true">
+              <path data-trace="" d="M5 17 C 8 20.5 11.5 23.5 13.5 25 C 18 18.5 22 12.5 27 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="0"></path>
+            </svg>
+          </span>
           <p style="font-size:17px;color:var(--second);padding-top:8px"><strong style="color:var(--corps);font-size:19px;display:block;margin-bottom:4px">Graphothérapeute certifiée</strong>formée aux troubles Dys, TSA, TDAH et handicaps moteurs.</p>
         </div>
         <div data-reveal="" style="display:flex;gap:20px;align-items:flex-start">
-          <span style="width:58px;height:58px;flex-shrink:0;border-radius:50%;background:var(--peche);display:flex;align-items:center;justify-content:center;font-family:'Source Serif 4',serif;color:var(--brun);font-size:25px">20</span>
-          <p style="font-size:17px;color:var(--second);padding-top:8px"><strong style="color:var(--corps);font-size:19px;display:block;margin-bottom:4px">20 ans d'expérience</strong>dans l'accompagnement des personnes au niveau social et au niveau professionnel.</p>
+          <span style="width:58px;height:58px;flex-shrink:0;border-radius:50%;background:var(--peche);display:flex;align-items:center;justify-content:center">
+            <svg viewBox="0 0 32 32" width="30" height="30" fill="none" style="color:var(--olive);display:block" aria-hidden="true">
+              <path data-trace="" d="M16 28.5 C 16 21 16 16 16 11.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="0"></path>
+              <path data-trace="" data-trace-late="" d="M15.8 16.4 c -6 -0.6 -8.2 -4.6 -7.6 -9.4 c 5 0 8.2 3.6 7.6 9.4 Z M16.2 13.4 c 6 -0.6 8.2 -4.6 7.6 -9.4 c -5 0 -8.2 3.6 -7.6 9.4 Z" fill="currentColor" stroke="none"></path>
+            </svg>
+          </span>
+          <p style="font-size:17px;color:var(--second);padding-top:8px"><strong style="color:var(--corps);font-size:19px;display:block;margin-bottom:4px">20 ans d'expérience</strong>dans l'accompagnement des personnes et de leurs parcours professionnels.</p>
         </div>
       </div>
     </section>
@@ -267,6 +284,35 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
               <p style="font-size:14.5px;color:var(--second)">Des activités variées et ludiques, une séance toutes les deux semaines, avec un point régulier sur les progrès.</p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RÉSULTAT CONCRET -->
+    <section style="background:var(--peche);padding:clamp(56px,8vw,92px) clamp(16px,5vw,56px)">
+      <div style="max-width:900px;margin:0 auto">
+        <div data-reveal="" style="text-align:center;margin-bottom:clamp(32px,4.5vw,48px)">
+          <span style="display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--second);font-weight:600;margin-bottom:14px"><span data-trait="" style="width:34px;height:1.5px;background:var(--rose);transform-origin:left"></span>Un exemple concret<span data-trait="" style="width:34px;height:1.5px;background:var(--rose);transform-origin:left"></span></span>
+          <h2 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:clamp(26px,3.6vw,38px);line-height:1.2">Ce que quelques séances peuvent changer</h2>
+        </div>
+        <div data-reveal="" style="background:#fff;border-radius:22px;padding:clamp(24px,4vw,40px);box-shadow:0 14px 36px rgba(107,112,92,0.10)">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(18px,2.5vw,28px)">
+            <div>
+              <div style="border-radius:16px;overflow:hidden;border:1px solid var(--bordure);display:flex;flex-direction:column;gap:2px;background:var(--bordure)">
+                <img loading="lazy" decoding="async" src="./img/main-theo-avant.jpg" alt="La main de Théo tenant son crayon, avant l'accompagnement" style="width:100%;height:auto;display:block">
+                <img loading="lazy" decoding="async" src="./img/theo-cahier-avant.jpg" alt="Extrait du cahier de Théo avant l'accompagnement : écriture peu assurée, lettres irrégulières" style="width:100%;height:auto;display:block">
+              </div>
+              <span style="display:inline-block;margin-top:12px;background:var(--peche);color:var(--brun);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 15px;border-radius:20px">Avant</span>
+            </div>
+            <div>
+              <div style="border-radius:16px;overflow:hidden;border:1px solid var(--bordure);display:flex;flex-direction:column;gap:2px;background:var(--bordure)">
+                <img loading="lazy" decoding="async" src="./img/main-theo-apres.jpg" alt="La main de Théo tenant son crayon, après l'accompagnement" style="width:100%;height:auto;display:block">
+                <img loading="lazy" decoding="async" src="./img/theo-cahier-apres.jpg" alt="Extrait du cahier de Théo après l'accompagnement : écriture plus fluide et régulière" style="width:100%;height:auto;display:block">
+              </div>
+              <span style="display:inline-block;margin-top:12px;background:var(--olive);color:#fff;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 15px;border-radius:20px">Après</span>
+            </div>
+          </div>
+          <p style="margin-top:clamp(22px,3vw,30px);font-size:16px;color:var(--corps);line-height:1.75">Théo, gaucher, en début de CE1, présentait une écriture maladroite et une gestion de l'espace graphique difficile. Quelques séances de graphothérapie lui ont permis d'améliorer sa prise du crayon, de fluidifier son écriture et de gagner en confiance.</p>
         </div>
       </div>
     </section>

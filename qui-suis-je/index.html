@@ -46,6 +46,12 @@ html{scrollbar-width:thin;scrollbar-color:#CB997E #F2E8DC}
 ::-webkit-scrollbar-corner{background:#F2E8DC}
 input:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #6B4548;outline-offset:2px}
 footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+/* Fix 18/08/2026 : les 3 blocs de réassurance accueil se désalignaient (2+1)
+   dans un conteneur de 880px avec auto-fit/minmax(280px). Portée ici dans
+   base.css (source) -- avant, seul le HTML déjà généré avait été patché à la
+   main, donc perdue à chaque régénération depuis template.html. */
+.reassurance-grid{display:grid;grid-template-columns:1fr;gap:clamp(24px,4vw,36px)}
+@media (min-width:760px){.reassurance-grid{grid-template-columns:repeat(3,1fr);gap:28px}}
 
 [data-hv="hv1"]:hover{color:var(--olive) !important;border-bottom-color:var(--terre) !important}
 [data-hv="hv2"]:hover{color:var(--olive) !important;border-bottom-color:var(--terre) !important}
@@ -138,7 +144,7 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
       <div style="display:flex;flex-direction:column;gap:26px;font-size:16.5px;color:var(--corps)">
         <p data-reveal="">J'accompagne les personnes dans les étapes importantes de leur parcours de vie. De l'accompagnement vers l'emploi à la graphothérapie, un même fil conducteur guide ma pratique : proposer un accompagnement bienveillant, personnalisé et respectueux de la singularité de chacun.</p>
         <p data-reveal="">Pendant plus de 7 ans, j'ai accompagné des personnes en situation de handicap dans la construction de leur projet professionnel. Cette expérience m'a permis de développer une compréhension approfondie des difficultés d'apprentissage, des enjeux liés à la confiance en soi et de l'importance d'adapter chaque accompagnement aux besoins de la personne.</p>
-        <p data-reveal="">Animée par le désir d'aller plus loin dans cette démarche, je me suis formée à la graphothérapie. Cette spécialisation est venue naturellement enrichir mon parcours. Parce que l'écriture mobilise à la fois les capacités motrices, les apprentissages, les émotions et la confiance en soi, la graphothérapie propose un accompagnement qui considère la personne dans toute sa singularité.</p>
+        <p data-reveal="">Animée par le désir d'aller plus loin dans cette démarche, je me suis formée à la graphothérapie — certifiée par le <strong>CNPG</strong> (Centre National de Graphologie et de Psychographie). Cette spécialisation est venue naturellement enrichir mon parcours. Parce que l'écriture mobilise à la fois les capacités motrices, les apprentissages, les émotions et la confiance en soi, la graphothérapie propose un accompagnement qui considère la personne dans toute sa singularité.</p>
         <p data-reveal="">Aujourd'hui, j'accompagne des enfants, des adolescents et des adultes qui rencontrent des difficultés avec leur écriture. Mon objectif est de les aider à retrouver un geste graphique plus fluide, plus confortable et plus efficace, afin qu'écrire ne soit plus une source de tension ou de découragement, mais redevienne un moyen de s'exprimer, d'apprendre et de prendre confiance en soi.</p>
         <p data-reveal="" style="border-left:3px solid var(--rose);padding:6px 0 6px 22px;font-family:'Source Serif 4',serif;font-style:italic;font-size:20px;color:var(--olive)">Mon ambition est simple : permettre à chacun de retrouver le plaisir d'écrire, de gagner en confiance et de révéler pleinement son potentiel, dans un accompagnement où la personne est toujours au cœur de la démarche.</p>
       </div>
@@ -195,20 +201,7 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
               <h3 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:17.5px;margin-bottom:6px">Psychologie de l’adolescent</h3>
               <p style="font-size:14px;color:var(--second)">Formation certifiante, pour mieux accompagner cette période charnière.</p>
             </div>
-
-            <div data-reveal="" style="background:var(--creme);border-radius:16px;padding:22px 24px;box-shadow:0 10px 26px rgba(107,112,92,0.08)">
-              <span style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--peche);margin-bottom:12px">
-                <svg viewBox="0 0 32 32" width="26" height="26" fill="none" style="color:var(--olive);display:block" aria-hidden="true">
-                  <path data-trace="" d="M3.5 9 C 8 6.5 13 7 16 9.6 C 19 7 24 6.5 28.5 9 L 28.5 24 C 24 21.6 19 22.1 16 24.6 C 13 22.1 8 21.6 3.5 24 Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="0"></path>
-
-                    <path data-trace="" data-trace-late="" d="M16 9.6 L 16 24.6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="0"></path>
-
-                </svg>
-              </span>
-              <h3 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:17.5px;margin-bottom:6px">Graphothérapeute certifiée CNPG</h3>
-              <p style="font-size:14px;color:var(--second)">Certification délivrée par le CNPG (Collège National des Praticiens en Graphothérapie).</p>
-            </div>
-
+          
         </div>
       </div>
     </section>
