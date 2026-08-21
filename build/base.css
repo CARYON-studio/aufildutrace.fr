@@ -1,8 +1,8 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{color-scheme:light;scroll-behavior:smooth}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:#FDFAF6;color:#2E3025;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;
-  --creme:#FDFAF6;--peche:#FFE8D6;--rose:#DDBEA9;--terre:#CB997E;--sauge:#A5A58D;--kaki:#6B705C;--olive:#3D5A3E;--corps:#2E3025;--second:#4A5040;--brun:#6B4548;--brunh:#583A3C;--bordure:#f0e7da;--terref:#A9714E}
-body[data-contraste="on"]{font-size:18.5px;--second:#3A4033;--corps:#22241B;--sauge:#6B705C}
+  --creme:#FDFAF6;--peche:#FFE8D6;--rose:#DDBEA9;--terre:#CB997E;--sauge:#A5A58D;--kaki:#6B705C;--olive:#3D5A3E;--corps:#2E3025;--second:#4A5040;--brun:#6B4548;--brunh:#583A3C;--bordure:#f0e7da;--terref:#7A4A28;--olivef:#35502F;--erreur:#A11C15}
+body[data-contraste="on"]{font-size:18.5px;--second:#3A4033;--corps:#22241B;--sauge:#6B705C;--terref:#6B3F20;--olive:#35502F}
 body[data-sprigs="off"] [data-sprig]{display:none}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -14,7 +14,7 @@ body[data-sprigs="off"] [data-sprig]{display:none}
 @keyframes archIn{from{opacity:0;transform:scale(.975)}to{opacity:1;transform:none}}
 body[data-anim="off"] *{animation:none !important}
 @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
-input::placeholder,textarea::placeholder{color:var(--sauge)}
+input::placeholder,textarea::placeholder{color:var(--second)}
 a{transition:color .3s cubic-bezier(.33,0,.2,1),background-color .3s cubic-bezier(.33,0,.2,1),border-color .3s cubic-bezier(.33,0,.2,1),box-shadow .3s cubic-bezier(.33,0,.2,1),transform .3s cubic-bezier(.33,0,.2,1)}
 a:hover{color:#3D5A3E}
 button{transition:background-color .3s cubic-bezier(.33,0,.2,1),color .3s cubic-bezier(.33,0,.2,1),border-color .3s cubic-bezier(.33,0,.2,1),box-shadow .3s cubic-bezier(.33,0,.2,1),transform .3s cubic-bezier(.33,0,.2,1)}
@@ -32,3 +32,26 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
    main, donc perdue à chaque régénération depuis template.html. */
 .reassurance-grid{display:grid;grid-template-columns:1fr;gap:clamp(24px,4vw,36px)}
 @media (min-width:760px){.reassurance-grid{grid-template-columns:repeat(3,1fr);gap:28px}}
+
+/* ── Correctifs accessibilité WCAG 2.1 AAA + FALC — 20/08/2026 ──────────────
+   Portés ici (source) ET dans le HTML déjà généré, pour survivre à une
+   régénération du pipeline. Ne pas retirer sans relire l'audit
+   02_NOTES-PROJET/AUDIT-ACCESSIBILITE-WCAG-AAA-FALC.md */
+/* 2.4.1 Contourner des blocs (A) — lien d'évitement */
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--second);color:#fff;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.3px;
+  padding:14px 22px;border-radius:0 0 14px 0;text-decoration:none;box-shadow:0 8px 22px rgba(74,80,64,0.28)}
+.skip:focus{left:0}
+main[tabindex="-1"]:focus{outline:none}
+/* 1.4.8 Présentation visuelle (AAA) — 80 caractères par ligne maximum */
+main p,main li{max-width:62ch}
+/* 1.4.10 Redistribution / 2.4.11 Focus non masqué — l'en-tête collant occupait
+   193 à 251 px (24 à 31 % de l'écran) tant que la navigation passe à la ligne.
+   Elle ne tient sur une seule ligne (73 px) qu'à partir de 1024 px : en dessous,
+   l'en-tête défile normalement au lieu de rester collé. */
+@media (max-width:1023px){[data-screen-label]>header{position:static !important}}
+/* 3.1.4 Abréviations (AAA) — sigles développés en info-bulle, sans toucher au texte visible.
+   Retirer le border-bottom si le soulignement pointillé n'est pas souhaité. */
+abbr[title]{text-decoration:none;border-bottom:1px dotted currentColor;cursor:help}
+/* 3.3.1 / 4.1.2 — état d'erreur des champs, piloté par aria-invalid et non par le seul JS */
+input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erreur) !important}

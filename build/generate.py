@@ -129,7 +129,7 @@ def render_articles_section(articles, prefix):
                 '<p style="font-size:15px;color:var(--second)">'
                 'De nouveaux articles arrivent bientôt.</p></section>')
     cards = []
-    for a in articles:
+    for idx, a in enumerate(articles, 1):
         img_html = ''
         if a['image']:
             # Sveltia stocke déjà le chemin public complet (ex. /img/articles/x.jpg)
@@ -145,14 +145,14 @@ def render_articles_section(articles, prefix):
                          f'{html.escape(a["date_fr"])}</span>')
         cards.append(f'''
           <div style="background:#fff;border:1px solid var(--bordure);border-radius:16px;overflow:hidden;transition:border-color .2s ease" data-article-item data-open="false">
-            <button data-article-toggle aria-expanded="false" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;text-align:left;padding:18px 22px;font-family:'Source Serif 4',serif;font-size:17.5px;color:var(--olive);min-height:44px">
+            <button data-article-toggle aria-expanded="false" aria-controls="article-panel-{idx}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;text-align:left;padding:18px 22px;font-family:'Source Serif 4',serif;font-size:17.5px;color:var(--olive);min-height:44px">
               <span>
                 <span style="display:block">{html.escape(a['title'])}</span>
                 {date_html}
               </span>
               <span data-article-chevron style="font-size:20px;color:var(--brun);flex-shrink:0;transform:rotate(0deg);transition:transform .25s ease">+</span>
             </button>
-            <div data-article-panel hidden style="padding:0 22px 24px;font-size:15px;color:var(--corps);line-height:1.75">
+            <div data-article-panel id="article-panel-{idx}" hidden style="padding:0 22px 24px;font-size:15px;color:var(--corps);line-height:1.75">
               {img_html}{a['html']}
             </div>
           </div>''')
@@ -180,10 +180,22 @@ def patch_faq(html):
     html2, n1 = CARD_RE.subn(
         lambda m: m.group(0)[:-1] + ' data-faq-item data-open="false">',
         html)
-    html2, n2 = BUTTON_RE.subn('<button data-faq-toggle aria-expanded="false"', html2)
-    html2, n3 = PANEL_RE.subn(
-        '<div data-faq-panel hidden style="padding:0 22px 20px;font-size:15px;color:var(--corps);line-height:1.75">',
-        html2)
+    # WCAG 4.1.2 / 2.4.10 : chaque question est encapsulee dans un <h2> et
+    # reliee a son panneau par aria-controls (l'etat est synchronise par site.js).
+    _i = [0]
+    def _btn(m):
+        _i[0] += 1
+        return ('<h2 style="margin:0;font-size:inherit;font-weight:inherit">'
+                '<button data-faq-toggle aria-expanded="false" '
+                'aria-controls="faq-panel-%d"' % _i[0])
+    html2, n2 = BUTTON_RE.subn(_btn, html2)
+    html2 = re.sub(r'(</button>)(\s*<div (?:data-pave="" )?style="padding:0 22px 20px)', r'\1</h2>\2', html2)
+    _j = [0]
+    def _pan(m):
+        _j[0] += 1
+        return ('<div data-faq-panel id="faq-panel-%d" hidden '
+                'style="padding:0 22px 20px;font-size:15px;color:var(--corps);line-height:1.75">' % _j[0])
+    html2, n3 = PANEL_RE.subn(_pan, html2)
     return html2, min(n1, n2, n3)
 
 def build_doc(page_id, body_html, hover_rules, prefix):
@@ -215,6 +227,7 @@ def build_doc(page_id, body_html, hover_rules, prefix):
 </style>
 </head>
 <body data-anim="on" data-sprigs="on" data-contraste="off">
+<a class="skip" href="#contenu">Aller au contenu</a>
 {body_html}
 <script src="{prefix}site.js" defer></script>
 </body>

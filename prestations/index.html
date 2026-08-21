@@ -21,8 +21,8 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{color-scheme:light;scroll-behavior:smooth}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:#FDFAF6;color:#2E3025;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;
-  --creme:#FDFAF6;--peche:#FFE8D6;--rose:#DDBEA9;--terre:#CB997E;--sauge:#A5A58D;--kaki:#6B705C;--olive:#3D5A3E;--corps:#2E3025;--second:#4A5040;--brun:#6B4548;--brunh:#583A3C;--bordure:#f0e7da;--terref:#A9714E}
-body[data-contraste="on"]{font-size:18.5px;--second:#3A4033;--corps:#22241B;--sauge:#6B705C}
+  --creme:#FDFAF6;--peche:#FFE8D6;--rose:#DDBEA9;--terre:#CB997E;--sauge:#A5A58D;--kaki:#6B705C;--olive:#3D5A3E;--corps:#2E3025;--second:#4A5040;--brun:#6B4548;--brunh:#583A3C;--bordure:#f0e7da;--terref:#7A4A28;--olivef:#35502F;--erreur:#A11C15}
+body[data-contraste="on"]{font-size:18.5px;--second:#3A4033;--corps:#22241B;--sauge:#6B705C;--terref:#6B3F20;--olive:#35502F}
 body[data-sprigs="off"] [data-sprig]{display:none}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -34,7 +34,7 @@ body[data-sprigs="off"] [data-sprig]{display:none}
 @keyframes archIn{from{opacity:0;transform:scale(.975)}to{opacity:1;transform:none}}
 body[data-anim="off"] *{animation:none !important}
 @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
-input::placeholder,textarea::placeholder{color:var(--sauge)}
+input::placeholder,textarea::placeholder{color:var(--second)}
 a{transition:color .3s cubic-bezier(.33,0,.2,1),background-color .3s cubic-bezier(.33,0,.2,1),border-color .3s cubic-bezier(.33,0,.2,1),box-shadow .3s cubic-bezier(.33,0,.2,1),transform .3s cubic-bezier(.33,0,.2,1)}
 a:hover{color:#3D5A3E}
 button{transition:background-color .3s cubic-bezier(.33,0,.2,1),color .3s cubic-bezier(.33,0,.2,1),border-color .3s cubic-bezier(.33,0,.2,1),box-shadow .3s cubic-bezier(.33,0,.2,1),transform .3s cubic-bezier(.33,0,.2,1)}
@@ -46,6 +46,29 @@ html{scrollbar-width:thin;scrollbar-color:#CB997E #F2E8DC}
 ::-webkit-scrollbar-corner{background:#F2E8DC}
 input:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #6B4548;outline-offset:2px}
 footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+/* ── Correctifs accessibilité WCAG 2.1 AAA + FALC — 20/08/2026 ──────────────
+   Portés ici (source) ET dans le HTML déjà généré, pour survivre à une
+   régénération du pipeline. Ne pas retirer sans relire l'audit
+   02_NOTES-PROJET/AUDIT-ACCESSIBILITE-WCAG-AAA-FALC.md */
+/* 2.4.1 Contourner des blocs (A) — lien d'évitement */
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--second);color:#fff;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.3px;
+  padding:14px 22px;border-radius:0 0 14px 0;text-decoration:none;box-shadow:0 8px 22px rgba(74,80,64,0.28)}
+.skip:focus{left:0}
+main[tabindex="-1"]:focus{outline:none}
+/* 1.4.8 Présentation visuelle (AAA) — 80 caractères par ligne maximum */
+main p,main li{max-width:62ch}
+/* 1.4.10 Redistribution / 2.4.11 Focus non masqué — l'en-tête collant occupait
+   193 à 251 px (24 à 31 % de l'écran) tant que la navigation passe à la ligne.
+   Elle ne tient sur une seule ligne (73 px) qu'à partir de 1024 px : en dessous,
+   l'en-tête défile normalement au lieu de rester collé. */
+@media (max-width:1023px){[data-screen-label]>header{position:static !important}}
+/* 3.1.4 Abréviations (AAA) — sigles développés en info-bulle, sans toucher au texte visible.
+   Retirer le border-bottom si le soulignement pointillé n'est pas souhaité. */
+abbr[title]{text-decoration:none;border-bottom:1px dotted currentColor;cursor:help}
+/* 3.3.1 / 4.1.2 — état d'erreur des champs, piloté par aria-invalid et non par le seul JS */
+input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erreur) !important}
 
 [data-hv="hv1"]:hover{color:var(--olive) !important;border-bottom-color:var(--terre) !important}
 [data-hv="hv2"]:hover{color:var(--olive) !important;border-bottom-color:var(--terre) !important}
@@ -70,13 +93,14 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
 </style>
 </head>
 <body data-anim="on" data-sprigs="on" data-contraste="off">
+<a class="skip" href="#contenu">Aller au contenu</a>
 <div data-screen-label="Site Au fil du tracé" style="min-width:320px">
 
   <!-- ═══ HEADER ═══ -->
   <header style="position:sticky;top:0;z-index:50;background:rgba(253,250,246,0.94);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid #efe6d9">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px clamp(16px,5vw,56px);max-width:1180px;margin:0 auto">
       <a href="../index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer">
-        <img src="../img/logo-trans.png" alt="Au fil du tracé — logo" style="height:46px;width:auto;display:block">
+        <img src="../img/logo-trans.png" alt="" style="height:46px;width:auto;display:block">
         <span style="line-height:1.15">
           <span style="display:block;font-family:'Source Serif 4',serif;font-size:18px;color:var(--olive)">Au fil du tracé</span>
           <span style="display:block;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--second);margin-top:2px">Graphothérapie</span>
@@ -88,7 +112,7 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
         
           <a href="../qui-suis-je/index.html" style="font-size:14px;color:#2E3025;text-decoration:none;letter-spacing:0.2px;padding:6px 2px;border-bottom:2px solid transparent;font-weight:400;cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;transition:color .2s ease,border-color .2s ease" data-hv="hv2">Qui suis-je ?</a>
         
-          <a href="../prestations/index.html" style="font-size:14px;color:#3D5A3E;text-decoration:none;letter-spacing:0.2px;padding:6px 2px;border-bottom:2px solid #DDBEA9;font-weight:600;cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;transition:color .2s ease,border-color .2s ease" data-hv="hv3">Prestations</a>
+          <a href="../prestations/index.html" aria-current="page" style="font-size:14px;color:#3D5A3E;text-decoration:none;letter-spacing:0.2px;padding:6px 2px;border-bottom:2px solid var(--terref);font-weight:600;cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;transition:color .2s ease,border-color .2s ease" data-hv="hv3">Prestations</a>
         
           <a href="../exercices/index.html" style="font-size:14px;color:#2E3025;text-decoration:none;letter-spacing:0.2px;padding:6px 2px;border-bottom:2px solid transparent;font-weight:400;cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;transition:color .2s ease,border-color .2s ease" data-hv="hv4">Exercices</a>
         
@@ -101,7 +125,7 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
     </div>
   </header>
 
-  <main>
+  <main id="contenu" tabindex="-1">
 
   <!-- ═══════════ PAGE ACCUEIL ═══════════ -->
   
@@ -143,7 +167,7 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
     <section style="max-width:1180px;margin:0 auto;padding:clamp(36px,5vw,56px) clamp(16px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,3vw,30px)">
       
         <div data-reveal="" style="background:#fff;border:1px solid var(--bordure);border-radius:20px;padding:clamp(24px,3vw,34px);box-shadow:0 12px 30px rgba(107,112,92,0.07)">
-          <span style="display:inline-block;background:var(--peche);color:var(--brun);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 15px;border-radius:20px;margin-bottom:16px">Chez un enfant</span>
+          <span style="display:inline-block;background:var(--peche);color:var(--brunh);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 15px;border-radius:20px;margin-bottom:16px">Chez un enfant</span>
           <h2 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:21px;margin-bottom:14px">Des signes au quotidien</h2>
           <div style="display:flex;flex-direction:column;gap:10px">
             
@@ -163,7 +187,7 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
         </div>
       
         <div data-reveal="" style="background:#fff;border:1px solid var(--bordure);border-radius:20px;padding:clamp(24px,3vw,34px);box-shadow:0 12px 30px rgba(107,112,92,0.07)">
-          <span style="display:inline-block;background:var(--peche);color:var(--brun);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 15px;border-radius:20px;margin-bottom:16px">Chez un collégien ou lycéen</span>
+          <span style="display:inline-block;background:var(--peche);color:var(--brunh);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 15px;border-radius:20px;margin-bottom:16px">Chez un collégien ou lycéen</span>
           <h2 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:21px;margin-bottom:14px">L’écrit devient un frein</h2>
           <div style="display:flex;flex-direction:column;gap:10px">
             
@@ -181,7 +205,7 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
         </div>
       
         <div data-reveal="" style="background:#fff;border:1px solid var(--bordure);border-radius:20px;padding:clamp(24px,3vw,34px);box-shadow:0 12px 30px rgba(107,112,92,0.07)">
-          <span style="display:inline-block;background:var(--peche);color:var(--brun);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 15px;border-radius:20px;margin-bottom:16px">Chez un adulte</span>
+          <span style="display:inline-block;background:var(--peche);color:var(--brunh);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 15px;border-radius:20px;margin-bottom:16px">Chez un adulte</span>
           <h2 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:21px;margin-bottom:14px">Un besoin d’efficacité</h2>
           <div style="display:flex;flex-direction:column;gap:10px">
             
@@ -200,19 +224,19 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
         <h2 data-reveal="" style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:clamp(26px,3.6vw,38px);text-align:center;margin-bottom:clamp(30px,4vw,48px)">La méthode</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(20px,3vw,32px)">
           <div data-reveal="" style="background:var(--creme);border-radius:20px;padding:clamp(26px,3vw,38px);box-shadow:0 14px 36px rgba(107,112,92,0.10)">
-            <span style="font-family:'Source Serif 4',serif;font-size:30px;color:var(--rose);line-height:1">01</span>
+            <span style="font-family:'Source Serif 4',serif;font-size:30px;color:var(--terref);line-height:1">01</span>
             <h3 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:23px;margin:10px 0 12px">Le bilan</h3>
             <p style="font-size:15.5px;color:var(--corps);margin-bottom:12px">Un premier rendez-vous de 1h30 à 2h : nous prenons le temps de faire connaissance et d'observer l'écriture. Le bilan comprend une évaluation à l'échelle d'Ajuriaguerra, un outil de référence pour analyser objectivement les composantes de l'écriture manuscrite.</p>
             <p style="font-size:14px;color:var(--second)">Cet échange permet d'identifier les besoins et de proposer un accompagnement personnalisé. Si c'est plus pertinent, je peux vous orienter vers un autre professionnel. Compte-rendu écrit envoyé par mail.</p>
           </div>
           <div data-reveal="" style="background:var(--creme);border-radius:20px;padding:clamp(26px,3vw,38px);box-shadow:0 14px 36px rgba(107,112,92,0.10)">
-            <span style="font-family:'Source Serif 4',serif;font-size:30px;color:var(--rose);line-height:1">02</span>
+            <span style="font-family:'Source Serif 4',serif;font-size:30px;color:var(--terref);line-height:1">02</span>
             <h3 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:23px;margin:10px 0 12px">Les séances</h3>
             <p style="font-size:15.5px;color:var(--corps);margin-bottom:12px">Chaque séance de 45 minutes commence par des exercices de détente, de concentration et de motricité fine. Le graphisme est ensuite travaillé par des activités variées et ludiques, sur des supports et outils différents, adaptées à l'âge et aux objectifs.</p>
             <p style="font-size:14px;color:var(--second)">Une séance toutes les deux semaines, avec des points d'étape réguliers — partagés avec les parents pour les enfants.</p>
           </div>
           <div data-reveal="" style="background:var(--creme);border-radius:20px;padding:clamp(26px,3vw,38px);box-shadow:0 14px 36px rgba(107,112,92,0.10)">
-            <span style="font-family:'Source Serif 4',serif;font-size:30px;color:var(--rose);line-height:1">03</span>
+            <span style="font-family:'Source Serif 4',serif;font-size:30px;color:var(--terref);line-height:1">03</span>
             <h3 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:23px;margin:10px 0 12px">Le suivi offert</h3>
             <p style="font-size:15.5px;color:var(--corps);margin-bottom:12px">Un rendez-vous de suivi, <strong>offert</strong>, est proposé à 3 mois et/ou 6 mois après l'accompagnement.</p>
             <p style="font-size:14px;color:var(--second)">Nous évaluons ensemble les effets des séances, faisons le point sur les progrès accomplis et ajustons si besoin.</p>
@@ -270,7 +294,7 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
         <div style="display:grid;grid-template-columns:1fr;gap:clamp(20px,3vw,30px);max-width:820px;margin:0 auto">
           <div data-reveal="" style="background:var(--creme);border-radius:22px;padding:clamp(26px,3vw,38px);box-shadow:0 14px 36px rgba(107,112,92,0.10);display:flex;flex-direction:column">
             <img loading="lazy" decoding="async" src="../img/presta-enfant.jpg" alt="Enfant qui s'applique à écrire" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px; margin-bottom: 18px; display: block" data-comment-anchor="dfa638d4df-img">
-            <span style="display:inline-block;align-self:flex-start;background:var(--peche);color:var(--brun);font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:6px 15px;border-radius:20px;margin-bottom:16px">Enfants &amp; adolescents · vacances scolaires</span>
+            <span style="display:inline-block;align-self:flex-start;background:var(--peche);color:var(--brunh);font-size:13px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:6px 15px;border-radius:20px;margin-bottom:16px">Enfants &amp; adolescents · vacances scolaires</span>
             <h3 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:23px;line-height:1.25;margin-bottom:12px">Les secrets d'une écriture confortable</h3>
             <p style="font-size:15px;color:var(--corps);margin-bottom:16px">Votre enfant a parfois mal à la main ? Il se fatigue vite quand il écrit, ou il aimerait simplement écrire plus facilement ? Pendant 2 heures, place aux jeux, aux défis et aux astuces.</p>
             <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:16px">
@@ -286,7 +310,7 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
           </div>
           <div data-reveal="" style="background:var(--creme);border-radius:22px;padding:clamp(26px,3vw,38px);box-shadow:0 14px 36px rgba(107,112,92,0.10);display:flex;flex-direction:column">
             <img loading="lazy" decoding="async" src="../img/bandeau-seniors-full.png" alt="Ateliers de graphothérapie simplifiée pour séniors : un geste plus souple, moins de tension, mémoire et concentration, lien social et partage" style="width:100%;height:auto;border-radius:16px;margin-bottom:18px;display:block;box-shadow:0 8px 20px rgba(107,112,92,0.10)" data-comment-anchor="03ffdf9d8e-img">
-            <span style="display:inline-block;align-self:flex-start;background:var(--peche);color:var(--brun);font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:6px 15px;border-radius:20px;margin-bottom:16px">Séniors · en établissement (type EHPAD)</span>
+            <span style="display:inline-block;align-self:flex-start;background:var(--peche);color:var(--brunh);font-size:13px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:6px 15px;border-radius:20px;margin-bottom:16px">Séniors · en établissement (type EHPAD)</span>
             <h3 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:23px;line-height:1.25;margin-bottom:12px">Écrire pour stimuler et garder le plaisir du geste</h3>
             <p style="font-size:15px;color:var(--corps);margin-bottom:16px">L'écriture mobilise la mémoire, l'attention, la concentration, la coordination et la motricité fine. En petits groupes, ces ateliers offrent un moment de bien-être, de stimulation et de partage.</p>
             <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:16px">
@@ -332,40 +356,40 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(28px,4vw,48px);max-width:1180px;margin:0 auto;padding:0 clamp(16px,5vw,56px) clamp(36px,5vw,52px)">
       <div>
         <div style="font-family:'Source Serif 4',serif;font-size:26px;color:#fff;margin-bottom:8px">Au fil du tracé</div>
-        <div style="font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose);margin-bottom:18px">Graphothérapie</div>
-        <p style="font-size:15px;color:#cfccc0;max-width:300px">Béatrice Gouts Bourjac — graphothérapeute. Un accompagnement humain, sur rendez-vous.</p>
+        <div style="font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--peche);margin-bottom:18px">Graphothérapie</div>
+        <p style="font-size:15px;color:#EFEDE4;max-width:300px">Béatrice Gouts Bourjac — graphothérapeute. Un accompagnement humain, sur rendez-vous.</p>
       </div>
       <div>
-        <h3 style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);margin-bottom:18px;font-weight:600">Me contacter</h3>
+        <h2 style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--peche);margin-bottom:18px;font-weight:600">Me contacter</h2>
         <div style="display:flex;flex-direction:column;gap:4px;font-size:15px">
-          <p style="color:#d6d3c8">Corme-Écluse (17600)</p>
-          <p style="color:#b8b5aa;font-size:13.5px;line-height:1.6;max-width:280px">Séances à domicile et en établissement — secteur Saintes, Gémozac, Pons et alentours (rayon 30 min autour de Corme-Écluse — 17).</p>
-          <a href="tel:0782110029" style="color:#d6d3c8;text-decoration:none;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv11">07 82 11 00 29</a>
-          <a href="mailto:aufildutrace@gmail.com" style="color:#d6d3c8;text-decoration:none;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv12">aufildutrace@gmail.com</a>
+          <p style="color:#EFEDE4">Corme-Écluse (17600)</p>
+          <p style="color:#EFEDE4;font-size:14px;line-height:1.6;max-width:280px">Séances à domicile et en établissement — secteur Saintes, Gémozac, Pons et alentours (rayon 30 min autour de Corme-Écluse — 17).</p>
+          <a href="tel:0782110029" style="color:#EFEDE4;text-decoration:none;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv11">07 82 11 00 29</a>
+          <a href="mailto:aufildutrace@gmail.com" style="color:#EFEDE4;text-decoration:none;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv12">aufildutrace@gmail.com</a>
         </div>
       </div>
       <div>
-        <h3 style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);margin-bottom:18px;font-weight:600">Le site</h3>
+        <h2 style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--peche);margin-bottom:18px;font-weight:600">Le site</h2>
         <div style="display:flex;flex-direction:column;gap:4px;font-size:15px">
           
-            <a href="../index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv13">Accueil</a>
+            <a href="../index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv13">Accueil</a>
           
-            <a href="../qui-suis-je/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv14">Qui suis-je ?</a>
+            <a href="../qui-suis-je/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv14">Qui suis-je ?</a>
           
-            <a href="../prestations/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv15">Prestations</a>
+            <a href="../prestations/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv15">Prestations</a>
           
-            <a href="../exercices/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv16">Exercices</a>
+            <a href="../exercices/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv16">Exercices</a>
           
-            <a href="../le-coin-des-curieux/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv17">Le coin des curieux</a>
+            <a href="../le-coin-des-curieux/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv17">Le coin des curieux</a>
           
-            <a href="../faq/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv18">FAQ</a>
+            <a href="../faq/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv18">FAQ</a>
           
-          <a href="../mentions-legales/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv19">Mentions légales</a>
-          <a href="../politique-de-confidentialite/index.html" style="color:#d6d3c8;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv20">Politique de confidentialité</a>
+          <a href="../mentions-legales/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv19">Mentions légales</a>
+          <a href="../politique-de-confidentialite/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv20">Politique de confidentialité</a>
         </div>
       </div>
     </div>
-    <div style="border-top:1px solid rgba(255,255,255,0.12);padding:18px clamp(16px,5vw,56px);max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:13px;color:#b8b5aa">
+    <div style="border-top:1px solid rgba(255,255,255,0.12);padding:18px clamp(16px,5vw,56px);max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:#EFEDE4">
       <span>© 2026 Au fil du tracé — Béatrice Gouts Bourjac</span>
       <span>Site sans cookie de suivi</span>
     </div>

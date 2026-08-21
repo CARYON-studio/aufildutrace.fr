@@ -162,6 +162,8 @@
         document.querySelectorAll('[data-faq-item][data-open="true"]').forEach(function (other) {
           if (other !== item) {
             other.setAttribute('data-open', 'false');
+            var ob = other.querySelector('[data-faq-toggle]');
+            if (ob) ob.setAttribute('aria-expanded', 'false');
             other.querySelector('[data-faq-panel]').hidden = true;
             other.style.borderColor = '#f0e7da';
             var oc = other.querySelector('[data-faq-chevron]');
@@ -169,6 +171,8 @@
           }
         });
         item.setAttribute('data-open', isOpen ? 'false' : 'true');
+        // WCAG 4.1.2 : l'etat annonce doit suivre l'etat reel du panneau.
+        btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
         panel.hidden = isOpen;
         item.style.borderColor = isOpen ? '#f0e7da' : '#DDBEA9';
         if (chev) chev.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(45deg)';
@@ -191,6 +195,8 @@
         document.querySelectorAll('[data-article-item][data-open="true"]').forEach(function (other) {
           if (other !== item) {
             other.setAttribute('data-open', 'false');
+            var ob = other.querySelector('[data-article-toggle]');
+            if (ob) ob.setAttribute('aria-expanded', 'false');
             other.querySelector('[data-article-panel]').hidden = true;
             other.style.borderColor = 'var(--bordure)';
             var oc = other.querySelector('[data-article-chevron]');
@@ -198,6 +204,8 @@
           }
         });
         item.setAttribute('data-open', isOpen ? 'false' : 'true');
+        // WCAG 4.1.2 : l'etat annonce doit suivre l'etat reel du panneau.
+        btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
         panel.hidden = isOpen;
         item.style.borderColor = isOpen ? 'var(--bordure)' : '#DDBEA9';
         if (chev) chev.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(45deg)';
@@ -209,7 +217,7 @@
   // Le formulaire poste vers un Worker Cloudflare (voir 04_SCRIPTS/brevo-worker/)
   // qui relaie l'e-mail via l'API Brevo. La clé API Brevo reste côté serveur
   // (secret du Worker) — jamais exposée dans ce fichier ni dans le navigateur.
-  var CONTACT_ENDPOINT = 'https://aufildutrace-contact.CHANGEME.workers.dev';
+  var CONTACT_ENDPOINT = 'https://aufildutrace-contact.purple-block-fb2e.workers.dev';
 
   function initForm() {
     var form = document.querySelector('[data-contact-form]');
@@ -235,15 +243,24 @@
       [prenom, email, message].forEach(function (field) {
         var name = field.getAttribute('name');
         var errEl = document.getElementById('err-' + name);
+        // WCAG 3.3.1 / 4.1.2 : l'etat d'erreur doit etre expose aux lecteurs
+        // d'ecran, pas seulement colore. La bordure est pilotee par le CSS
+        // (regle input[aria-invalid="true"] dans base.css).
         if (errors[name]) {
-          field.style.borderColor = '#B3261E';
+          field.setAttribute('aria-invalid', 'true');
           if (errEl) errEl.textContent = errors[name];
         } else {
-          field.style.borderColor = 'var(--kaki)';
+          field.setAttribute('aria-invalid', 'false');
           if (errEl) errEl.textContent = '';
         }
       });
-      if (Object.keys(errors).length) return;
+      // WCAG 2.4.3 : porter le focus sur le premier champ en erreur, sinon
+      // l'utilisateur clavier reste sur le bouton et doit repartir en arriere.
+      if (Object.keys(errors).length) {
+        var firstInvalid = form.querySelector('[aria-invalid="true"]');
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
 
       if (errorBlock) errorBlock.hidden = true;
 
@@ -252,7 +269,7 @@
       // mais on n'envoie rien à Brevo.
       if (honeypot && honeypot.value.trim()) {
         form.hidden = true;
-        if (sentBlock) sentBlock.hidden = false;
+        if (sentBlock) { sentBlock.hidden = false; sentBlock.focus(); }
         return;
       }
 
@@ -271,7 +288,9 @@
         .then(function (res) {
           if (!res.ok) throw new Error('Réponse serveur ' + res.status);
           form.hidden = true;
-          if (sentBlock) sentBlock.hidden = false;
+          // WCAG 4.1.3 : sans deplacement du focus, l'utilisateur de lecteur
+          // d'ecran n'apprend jamais que son message est parti.
+          if (sentBlock) { sentBlock.hidden = false; sentBlock.focus(); }
         })
         .catch(function () {
           if (errorBlock) errorBlock.hidden = false;
