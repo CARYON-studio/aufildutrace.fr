@@ -1,0 +1,54 @@
+# Configuration Sveltia CMS — aufildutrace.fr
+# Une seule collection gérée : les articles du "Coin des curieux".
+# Le reste du site (textes, pages) n'est PAS éditable ici, volontairement.
+
+backend:
+  name: github
+  repo: CARYON-studio/aufildutrace.fr
+  branch: main
+  # URL du Worker Cloudflare qui gère l'authentification GitHub (voir
+  # 04_SCRIPTS/cms-auth-worker/DEPLOIEMENT.md). À remplacer par l'URL réelle
+  # une fois le Worker déployé.
+  base_url: https://aufildutrace-cms-auth.purple-block-fb2e.workers.dev
+  auth_endpoint: auth
+
+# Là où Sveltia dépose les images ajoutées depuis l'interface, et le chemin
+# public correspondant tel qu'il doit apparaître dans le site.
+media_folder: "img/articles"
+public_folder: "/img/articles"
+
+collections:
+  - name: "coin-des-curieux"
+    label: "Le coin des curieux — Articles"
+    label_singular: "Article"
+    folder: "content/coin-des-curieux"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    extension: "md"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - label: "Titre de l'article"
+        name: "title"
+        widget: "string"
+        hint: "Le titre affiché en haut de la carte."
+      - label: "Date de publication"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "DD/MM/YYYY"
+        time_format: false
+        picker_utc: true
+      - label: "Image (facultative)"
+        name: "image"
+        widget: "image"
+        required: false
+        hint: "Une photo ou illustration pour l'article. Laissez vide si vous n'en avez pas."
+      - label: "Contenu de l'article"
+        name: "body"
+        widget: "markdown"
+        minimal: true
+        buttons: ["bold", "italic", "link"]
+        hint: "Le texte de l'article. Quelques phrases suffisent."

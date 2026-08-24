@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+<title>Questions fréquentes sur la graphothérapie | Au fil du tracé</title>
+<meta name="description" content="Âge de démarrage, déroulé des séances, tarifs, remboursement : les réponses aux questions les plus posées sur la rééducation de l'écriture.">
+<link rel="canonical" href="https://aufildutrace.fr/faq/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Au fil du tracé">
+<meta property="og:title" content="Questions fréquentes sur la graphothérapie | Au fil du tracé">
+<meta property="og:description" content="Âge de démarrage, déroulé des séances, tarifs, remboursement : les réponses aux questions les plus posées sur la rééducation de l'écriture.">
+<meta property="og:url" content="https://aufildutrace.fr/faq/">
+<meta name="color-scheme" content="light">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{color-scheme:light;scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#FDFAF6;color:#2E3025;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;
+  --creme:#FDFAF6;--peche:#FFE8D6;--rose:#DDBEA9;--terre:#CB997E;--sauge:#A5A58D;--kaki:#6B705C;--olive:#3D5A3E;--corps:#2E3025;--second:#4A5040;--brun:#6B4548;--brunh:#583A3C;--bordure:#f0e7da;--terref:#7A4A28;--olivef:#35502F;--erreur:#A11C15}
+body[data-contraste="on"]{font-size:18.5px;--second:#3A4033;--corps:#22241B;--sauge:#6B705C;--terref:#6B3F20;--olive:#35502F}
+body[data-sprigs="off"] [data-sprig]{display:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes traceOn{to{stroke-dashoffset:0}}
+@keyframes traceFrom{from{stroke-dashoffset:320}to{stroke-dashoffset:0}}
+@keyframes traceUnit{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes traitX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes inkIn{from{opacity:0}}
+@keyframes archIn{from{opacity:0;transform:scale(.975)}to{opacity:1;transform:none}}
+body[data-anim="off"] *{animation:none !important}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+input::placeholder,textarea::placeholder{color:var(--second)}
+a{transition:color .3s cubic-bezier(.33,0,.2,1),background-color .3s cubic-bezier(.33,0,.2,1),border-color .3s cubic-bezier(.33,0,.2,1),box-shadow .3s cubic-bezier(.33,0,.2,1),transform .3s cubic-bezier(.33,0,.2,1)}
+a:hover{color:#3D5A3E}
+button{transition:background-color .3s cubic-bezier(.33,0,.2,1),color .3s cubic-bezier(.33,0,.2,1),border-color .3s cubic-bezier(.33,0,.2,1),box-shadow .3s cubic-bezier(.33,0,.2,1),transform .3s cubic-bezier(.33,0,.2,1)}
+html{scrollbar-width:thin;scrollbar-color:#CB997E #F2E8DC}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:#F2E8DC}
+::-webkit-scrollbar-thumb{background:#CB997E;border-radius:10px;border:3px solid #F2E8DC;transition:background .2s ease}
+::-webkit-scrollbar-thumb:hover{background:#6B4548}
+::-webkit-scrollbar-corner{background:#F2E8DC}
+input:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #6B4548;outline-offset:2px}
+footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+/* Fix 18/08/2026 : les 3 blocs de réassurance accueil se désalignaient (2+1)
+   dans un conteneur de 880px avec auto-fit/minmax(280px). Portée ici dans
+   base.css (source) -- avant, seul le HTML déjà généré avait été patché à la
+   main, donc perdue à chaque régénération depuis template.html. */
+.reassurance-grid{display:grid;grid-template-columns:1fr;gap:clamp(24px,4vw,36px)}
+@media (min-width:760px){.reassurance-grid{grid-template-columns:repeat(3,1fr);gap:28px}}
+
+/* ── Correctifs accessibilité WCAG 2.1 AAA + FALC — 20/08/2026 ──────────────
+   Portés ici (source) ET dans le HTML déjà généré, pour survivre à une
+   régénération du pipeline. Ne pas retirer sans relire l'audit
+   02_NOTES-PROJET/AUDIT-ACCESSIBILITE-WCAG-AAA-FALC.md */
+/* 2.4.1 Contourner des blocs (A) — lien d'évitement */
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--second);color:#fff;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.3px;
+  padding:14px 22px;border-radius:0 0 14px 0;text-decoration:none;box-shadow:0 8px 22px rgba(74,80,64,0.28)}
+.skip:focus{left:0}
+main[tabindex="-1"]:focus{outline:none}
+/* 1.4.8 Présentation visuelle (AAA) — 80 caractères par ligne maximum */
+main p,main li{max-width:62ch}
+/* 1.4.10 Redistribution / 2.4.11 Focus non masqué — l'en-tête collant occupait
+   193 à 251 px (24 à 31 % de l'écran) tant que la navigation passe à la ligne.
+   Elle ne tient sur une seule ligne (73 px) qu'à partir de 1024 px : en dessous,
+   l'en-tête défile normalement au lieu de rester collé. */
+@media (max-width:1023px){[data-screen-label]>header{position:static !important}}
+/* 3.1.4 Abréviations (AAA) — sigles développés en info-bulle, sans toucher au texte visible.
+   Retirer le border-bottom si le soulignement pointillé n'est pas souhaité. */
+abbr[title]{text-decoration:none;border-bottom:1px dotted currentColor;cursor:help}
+/* 3.3.1 / 4.1.2 — état d'erreur des champs, piloté par aria-invalid et non par le seul JS */
+input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erreur) !important}
+
+[data-hv="hv1"]:hover{color:var(--olive) !important;border-bottom-color:var(--terre) !important}
+[data-hv="hv2"]:hover{color:var(--olive) !important;border-bottom-color:var(--terre) !important}
+[data-hv="hv3"]:hover{color:var(--olive) !important;border-bottom-color:var(--terre) !important}
+[data-hv="hv4"]:hover{color:var(--olive) !important;border-bottom-color:var(--terre) !important}
+[data-hv="hv5"]:hover{color:var(--olive) !important;border-bottom-color:var(--terre) !important}
+[data-hv="hv6"]:hover{color:var(--olive) !important;border-bottom-color:var(--terre) !important}
+[data-hv="hv7"]:hover{background:#5C3B3D !important;transform:translateY(-1px) !important;box-shadow:0 10px 22px rgba(107,69,72,0.26),0 0 0 3px rgba(203,153,126,0.28) !important}
+[data-hv="hv8"]:hover{background:#5C3B3D !important;transform:translateY(-1px) !important;box-shadow:0 10px 22px rgba(107,69,72,0.26),0 0 0 3px rgba(203,153,126,0.28) !important}
+[data-hv="hv9"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
+[data-hv="hv10"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
+[data-hv="hv11"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
+[data-hv="hv12"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
+[data-hv="hv13"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
+[data-hv="hv14"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
+[data-hv="hv15"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
+[data-hv="hv16"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
+[data-hv="hv17"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
+[data-hv="hv18"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
+</style>
+</head>
+<body data-anim="on" data-sprigs="on" data-contraste="off">
+<a class="skip" href="#contenu">Aller au contenu</a>
+<div data-screen-label="Site Au fil du tracé" style="min-width:320px">
+
+  <!-- ═══ HEADER ═══ -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(253,250,246,0.94);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid #efe6d9">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px clamp(16px,5vw,56px);max-width:1180px;margin:0 auto">
+      <a href="../index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer">
+        <img src="../img/logo-trans.png" alt="" style="height:46px;width:auto;display:block">
+        <span style="line-height:1.15">
+          <span style="display:block;font-family:'Source Serif 4',serif;font-size:18px;color:var(--olive)">Au fil du tracé</span>
+          <span style="display:block;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--second);margin-top:2px">Graphothérapie</span>
+        </span>
+      </a>
+      <nav aria-label="Navigation principale" style="display:flex;align-items:center;gap:clamp(14px,2.4vw,32px);flex-wrap:wrap">
+        
+          <a href="../index.html" style="font-size:14px;color:#2E3025;text-decoration:none;letter-spacing:0.2px;padding:6px 2px;border-bottom:2px solid transparent;font-weight:400;cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;transition:color .2s ease,border-color .2s ease" data-hv="hv1">Accueil</a>
+        
+          <a href="../qui-suis-je/index.html" style="font-size:14px;color:#2E3025;text-decoration:none;letter-spacing:0.2px;padding:6px 2px;border-bottom:2px solid transparent;font-weight:400;cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;transition:color .2s ease,border-color .2s ease" data-hv="hv2">Qui suis-je ?</a>
+        
+          <a href="../prestations/index.html" style="font-size:14px;color:#2E3025;text-decoration:none;letter-spacing:0.2px;padding:6px 2px;border-bottom:2px solid transparent;font-weight:400;cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;transition:color .2s ease,border-color .2s ease" data-hv="hv3">Prestations</a>
+        
+          <a href="../exercices/index.html" style="font-size:14px;color:#2E3025;text-decoration:none;letter-spacing:0.2px;padding:6px 2px;border-bottom:2px solid transparent;font-weight:400;cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;transition:color .2s ease,border-color .2s ease" data-hv="hv4">Exercices</a>
+        
+          <a href="../le-coin-des-curieux/index.html" style="font-size:14px;color:#2E3025;text-decoration:none;letter-spacing:0.2px;padding:6px 2px;border-bottom:2px solid transparent;font-weight:400;cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;transition:color .2s ease,border-color .2s ease" data-hv="hv5">Le coin des curieux</a>
+        
+          <a href="../faq/index.html" aria-current="page" style="font-size:14px;color:#3D5A3E;text-decoration:none;letter-spacing:0.2px;padding:6px 2px;border-bottom:2px solid var(--terref);font-weight:600;cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;transition:color .2s ease,border-color .2s ease" data-hv="hv6">FAQ</a>
+        
+        <a href="../contact/index.html" style="background:var(--brun);color:#fff;padding:13px 22px;border-radius:30px;font-size:13px;font-weight:600;letter-spacing:0.3px;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;box-shadow:0 4px 14px rgba(107,69,72,0.30);transition:background .32s cubic-bezier(.33,0,.2,1),transform .32s cubic-bezier(.33,0,.2,1),box-shadow .32s cubic-bezier(.33,0,.2,1);cursor:pointer" data-hv="hv7">Me contacter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" tabindex="-1">
+
+  <!-- ═══════════ PAGE ACCUEIL ═══════════ -->
+  
+
+  <!-- ═══════════ PAGE PRÉSENTATION ═══════════ -->
+  
+
+  <!-- ═══════════ PAGE PRESTATIONS ═══════════ -->
+  
+
+  <!-- ═══════════ PAGE EXERCICES ═══════════ -->
+  
+
+  <!-- ═══════════ PAGE LE COIN DES CURIEUX ═══════════ -->
+  
+
+  <!-- ═══════════ PAGE FAQ ═══════════ -->
+  
+  <div data-screen-label="FAQ">
+    <section style="background:var(--creme);padding:clamp(40px,6vw,68px) clamp(16px,5vw,56px) clamp(24px,3vw,40px);text-align:center">
+      <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">FAQ — Questions fréquentes</h1>
+      <img loading="lazy" decoding="async" src="../img/deco-faq.png" alt="FAQ — Questions fréquentes. Toutes les réponses aux questions que vous vous posez. Si vous avez d'autres questions, n'hésitez pas à me contacter, je serai ravie d'y répondre." data-reveal="" style="width:100%;max-width:430px;height:auto;display:block;margin:0 auto;border-radius:20px">
+    </section>
+    <section style="max-width:860px;margin:0 auto;padding:clamp(20px,3vw,36px) clamp(16px,5vw,56px) clamp(32px,5vw,52px)">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        
+          <h2 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:clamp(19px,2.4vw,22px);margin:clamp(18px,2.5vw,26px) 0 2px;padding-left:2px">Avant de commencer</h2>
+          
+          <div data-faq-item data-open="false" style="background:#fff;border:1px solid #f0e7da;border-radius:16px;overflow:hidden;transition:border-color .2s ease">
+            <h3 style="margin:0;font-size:inherit;font-weight:inherit">
+              <button data-faq-toggle aria-expanded="false" aria-controls="faq-panel-1" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;text-align:left;padding:18px 22px;font-family:'Source Serif 4',serif;font-size:17.5px;color:var(--olive);min-height:44px">
+                <span>À partir de quel âge peut-on commencer ?</span>
+                <span data-faq-chevron style="font-size:20px;color:var(--brun);flex-shrink:0;transform:rotate(0deg);transition:transform .25s ease">+</span>
+              </button>
+            </h3>
+            <div data-faq-panel id="faq-panel-1" hidden style="padding:0 22px 20px;font-size:15px;color:var(--corps);line-height:1.75">La graphothérapie, c’est la rééducation du geste d’écriture. Elle s’adresse aux enfants dès 6 ou 7 ans, lorsque l’écriture est suffisamment installée pour être évaluée. Elle accompagne aussi les adolescents confrontés à des difficultés persistantes. Les adultes peuvent en bénéficier pour gagner en confort et retrouver une écriture plus fluide au quotidien.</div>
+          </div>
+          
+          <div data-faq-item data-open="false" style="background:#fff;border:1px solid #f0e7da;border-radius:16px;overflow:hidden;transition:border-color .2s ease">
+            <h3 style="margin:0;font-size:inherit;font-weight:inherit">
+              <button data-faq-toggle aria-expanded="false" aria-controls="faq-panel-2" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;text-align:left;padding:18px 22px;font-family:'Source Serif 4',serif;font-size:17.5px;color:var(--olive);min-height:44px">
+                <span>Comment savoir si une rééducation de l’écriture est utile ?</span>
+                <span data-faq-chevron style="font-size:20px;color:var(--brun);flex-shrink:0;transform:rotate(0deg);transition:transform .25s ease">+</span>
+              </button>
+            </h3>
+            <div data-faq-panel id="faq-panel-2" hidden style="padding:0 22px 20px;font-size:15px;color:var(--corps);line-height:1.75">Plusieurs signes peuvent vous alerter. Une écriture difficile à lire, très lente ou fatigante. Des douleurs à la main, au poignet ou au bras. Un stress ou un découragement dès qu’il faut écrire. Une gêne à l’école, dans les études ou au travail. Un bilan permet d’évaluer les difficultés et de dire si une rééducation est adaptée.</div>
+          </div>
+          
+          <div data-faq-item data-open="false" style="background:#fff;border:1px solid #f0e7da;border-radius:16px;overflow:hidden;transition:border-color .2s ease">
+            <h3 style="margin:0;font-size:inherit;font-weight:inherit">
+              <button data-faq-toggle aria-expanded="false" aria-controls="faq-panel-3" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;text-align:left;padding:18px 22px;font-family:'Source Serif 4',serif;font-size:17.5px;color:var(--olive);min-height:44px">
+                <span>Est-ce utile pour les adultes ?</span>
+                <span data-faq-chevron style="font-size:20px;color:var(--brun);flex-shrink:0;transform:rotate(0deg);transition:transform .25s ease">+</span>
+              </button>
+            </h3>
+            <div data-faq-panel id="faq-panel-3" hidden style="padding:0 22px 20px;font-size:15px;color:var(--corps);line-height:1.75">Oui. La graphothérapie aide les adultes à gagner en fluidité, en lisibilité et en confort. Par exemple pour reprendre des études, préparer un concours, ou retrouver une écriture fonctionnelle après un accident de la vie. Des progrès sont généralement observés avec une pratique régulière.</div>
+          </div>
+          
+        
+          <h2 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:clamp(19px,2.4vw,22px);margin:clamp(18px,2.5vw,26px) 0 2px;padding-left:2px">Comment se passent les séances</h2>
+          
+          <div data-faq-item data-open="false" style="background:#fff;border:1px solid #f0e7da;border-radius:16px;overflow:hidden;transition:border-color .2s ease">
+            <h3 style="margin:0;font-size:inherit;font-weight:inherit">
+              <button data-faq-toggle aria-expanded="false" aria-controls="faq-panel-4" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;text-align:left;padding:18px 22px;font-family:'Source Serif 4',serif;font-size:17.5px;color:var(--olive);min-height:44px">
+                <span>En quoi consiste une séance ?</span>
+                <span data-faq-chevron style="font-size:20px;color:var(--brun);flex-shrink:0;transform:rotate(0deg);transition:transform .25s ease">+</span>
+              </button>
+            </h3>
+            <div data-faq-panel id="faq-panel-4" hidden style="padding:0 22px 20px;font-size:15px;color:var(--corps);line-height:1.75">Les séances sont pratiques, progressives et adaptées à chaque personne. Nous travaillons la posture et l’installation, la tenue du stylo et le geste. Puis la fluidité, la lisibilité, et la confiance dans l’acte d’écrire. Les exercices sont variés, et ludiques pour les plus jeunes.</div>
+          </div>
+          
+          <div data-faq-item data-open="false" style="background:#fff;border:1px solid #f0e7da;border-radius:16px;overflow:hidden;transition:border-color .2s ease">
+            <h3 style="margin:0;font-size:inherit;font-weight:inherit">
+              <button data-faq-toggle aria-expanded="false" aria-controls="faq-panel-5" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;text-align:left;padding:18px 22px;font-family:'Source Serif 4',serif;font-size:17.5px;color:var(--olive);min-height:44px">
+                <span>Quelle est la fréquence idéale des séances ?</span>
+                <span data-faq-chevron style="font-size:20px;color:var(--brun);flex-shrink:0;transform:rotate(0deg);transition:transform .25s ease">+</span>
+              </button>
+            </h3>
+            <div data-faq-panel id="faq-panel-5" hidden style="padding:0 22px 20px;font-size:15px;color:var(--corps);line-height:1.75">Chaque accompagnement est personnalisé : la fréquence s’adapte à l’âge, aux difficultés et aux objectifs. En général, une séance toutes les deux semaines favorise une progression durable.</div>
+          </div>
+          
+          <div data-faq-item data-open="false" style="background:#fff;border:1px solid #f0e7da;border-radius:16px;overflow:hidden;transition:border-color .2s ease">
+            <h3 style="margin:0;font-size:inherit;font-weight:inherit">
+              <button data-faq-toggle aria-expanded="false" aria-controls="faq-panel-6" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;text-align:left;padding:18px 22px;font-family:'Source Serif 4',serif;font-size:17.5px;color:var(--olive);min-height:44px">
+                <span>Y a-t-il du travail entre les séances ?</span>
+                <span data-faq-chevron style="font-size:20px;color:var(--brun);flex-shrink:0;transform:rotate(0deg);transition:transform .25s ease">+</span>
+              </button>
+            </h3>
+            <div data-faq-panel id="faq-panel-6" hidden style="padding:0 22px 20px;font-size:15px;color:var(--corps);line-height:1.75">Pour les plus jeunes, quelques exercices à la maison peuvent être utiles et efficaces. Pour les plus grands, bien appliquer les conseils donnés en séance tout au long des travaux écrits suffit.</div>
+          </div>
+          
+          <div data-faq-item data-open="false" style="background:#fff;border:1px solid #f0e7da;border-radius:16px;overflow:hidden;transition:border-color .2s ease">
+            <h3 style="margin:0;font-size:inherit;font-weight:inherit">
+              <button data-faq-toggle aria-expanded="false" aria-controls="faq-panel-7" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;text-align:left;padding:18px 22px;font-family:'Source Serif 4',serif;font-size:17.5px;color:var(--olive);min-height:44px">
+                <span>Combien de séances faut-il prévoir en tout ?</span>
+                <span data-faq-chevron style="font-size:20px;color:var(--brun);flex-shrink:0;transform:rotate(0deg);transition:transform .25s ease">+</span>
+              </button>
+            </h3>
+            <div data-faq-panel id="faq-panel-7" hidden style="padding:0 22px 20px;font-size:15px;color:var(--corps);line-height:1.75">Le besoin varie selon la nature des difficultés, l’âge, la motivation et l’assiduité de la personne. La moyenne se situe autour de 12 à 15 séances. Il est ensuite intéressant de revenir une fois par trimestre ou semestre pour vérifier l’évolution.</div>
+          </div>
+          
+        
+          <h2 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:clamp(19px,2.4vw,22px);margin:clamp(18px,2.5vw,26px) 0 2px;padding-left:2px">Tarifs, remboursement et matériel</h2>
+          
+          <div data-faq-item data-open="false" style="background:#fff;border:1px solid #f0e7da;border-radius:16px;overflow:hidden;transition:border-color .2s ease">
+            <h3 style="margin:0;font-size:inherit;font-weight:inherit">
+              <button data-faq-toggle aria-expanded="false" aria-controls="faq-panel-8" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;text-align:left;padding:18px 22px;font-family:'Source Serif 4',serif;font-size:17.5px;color:var(--olive);min-height:44px">
+                <span>Y a-t-il une prise en charge de la <abbr title='Caisse Primaire d’Assurance Maladie'>CPAM</abbr> ou des mutuelles ?</span>
+                <span data-faq-chevron style="font-size:20px;color:var(--brun);flex-shrink:0;transform:rotate(0deg);transition:transform .25s ease">+</span>
+              </button>
+            </h3>
+            <div data-faq-panel id="faq-panel-8" hidden style="padding:0 22px 20px;font-size:15px;color:var(--corps);line-height:1.75">Aucune prise en charge n’est prévue par l’Assurance Maladie, comme pour les psychologues ou les ergothérapeutes. Quelques mutuelles indemnisent sur la base d’un forfait annuel de 3 à 6 séances. La MDPH (Maison Départementale des Personnes Handicapées) ne rembourse pas directement. Mais dans certaines situations de handicap reconnu, une participation est parfois possible via la PCH (Prestation de Compensation du Handicap). Renseignez-vous auprès de la MDPH de votre département.</div>
+          </div>
+          
+          <div data-faq-item data-open="false" style="background:#fff;border:1px solid #f0e7da;border-radius:16px;overflow:hidden;transition:border-color .2s ease">
+            <h3 style="margin:0;font-size:inherit;font-weight:inherit">
+              <button data-faq-toggle aria-expanded="false" aria-controls="faq-panel-9" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;text-align:left;padding:18px 22px;font-family:'Source Serif 4',serif;font-size:17.5px;color:var(--olive);min-height:44px">
+                <span>Faut-il des stylos particuliers pendant et après la rééducation ?</span>
+                <span data-faq-chevron style="font-size:20px;color:var(--brun);flex-shrink:0;transform:rotate(0deg);transition:transform .25s ease">+</span>
+              </button>
+            </h3>
+            <div data-faq-panel id="faq-panel-9" hidden style="padding:0 22px 20px;font-size:15px;color:var(--corps);line-height:1.75">Une rééducation réussie permet à son terme de bien écrire avec n’importe quel stylo. Pour les plus jeunes, certains stylos sont plus adaptés pour éviter une rechute : je vous conseille le cas échéant.</div>
+          </div>
+          
+        
+      </div>
+      <div style="text-align:center;margin-top:clamp(28px,4vw,40px)">
+        <a href="../contact/index.html" style="display:inline-flex;align-items:center;gap:10px;background:var(--brun);color:#fff;text-decoration:none;padding:14px 30px;border-radius:34px;font-size:15px;font-weight:600;box-shadow:0 8px 22px rgba(107,69,72,0.32);cursor:pointer;transition:background .32s cubic-bezier(.33,0,.2,1),transform .32s cubic-bezier(.33,0,.2,1),box-shadow .32s cubic-bezier(.33,0,.2,1)" data-hv="hv8">Une autre question ? Écrivez-moi →</a>
+      </div>
+    </section>
+  </div>
+  
+
+  <!-- ═══════════ PAGE CONTACT & TARIFS ═══════════ -->
+  
+
+  <!-- ═══════════ PAGE MENTIONS LÉGALES ═══════════ -->
+  
+
+  <!-- ═══════════ PAGE CONFIDENTIALITÉ ═══════════ -->
+  
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer style="background:#4A5040;color:#e9e6dc;padding:clamp(44px,6vw,64px) 0 0" data-footer-focus="">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(28px,4vw,48px);max-width:1180px;margin:0 auto;padding:0 clamp(16px,5vw,56px) clamp(36px,5vw,52px)">
+      <div>
+        <div style="font-family:'Source Serif 4',serif;font-size:26px;color:#fff;margin-bottom:8px">Au fil du tracé</div>
+        <div style="font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--peche);margin-bottom:18px">Graphothérapie</div>
+        <p style="font-size:15px;color:#EFEDE4;max-width:300px">Béatrice Gouts Bourjac — graphothérapeute. Un accompagnement humain, sur rendez-vous.</p>
+      </div>
+      <div>
+        <h2 style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--peche);margin-bottom:18px;font-weight:600">Me contacter</h2>
+        <div style="display:flex;flex-direction:column;gap:4px;font-size:15px">
+          <p style="color:#EFEDE4">Corme-Écluse (17600)</p>
+          <p style="color:#EFEDE4;font-size:14px;line-height:1.6;max-width:280px">Séances à domicile et en établissement — secteur Saintes, Gémozac, Pons et alentours (rayon 30 min autour de Corme-Écluse — 17).</p>
+          <a href="tel:0782110029" style="color:#EFEDE4;text-decoration:none;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv9">07 82 11 00 29</a>
+          <a href="mailto:aufildutrace@gmail.com" style="color:#EFEDE4;text-decoration:none;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv10">aufildutrace@gmail.com</a>
+        </div>
+      </div>
+      <div>
+        <h2 style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--peche);margin-bottom:18px;font-weight:600">Le site</h2>
+        <div style="display:flex;flex-direction:column;gap:4px;font-size:15px">
+          
+            <a href="../index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv11">Accueil</a>
+          
+            <a href="../qui-suis-je/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv12">Qui suis-je ?</a>
+          
+            <a href="../prestations/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv13">Prestations</a>
+          
+            <a href="../exercices/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv14">Exercices</a>
+          
+            <a href="../le-coin-des-curieux/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv15">Le coin des curieux</a>
+          
+            <a href="../faq/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv16">FAQ</a>
+          
+          <a href="../mentions-legales/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv17">Mentions légales</a>
+          <a href="../politique-de-confidentialite/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv18">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.12);padding:18px clamp(16px,5vw,56px);max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:#EFEDE4">
+      <span>© 2026 Au fil du tracé — Béatrice Gouts Bourjac</span>
+      <span>Site sans cookie de suivi</span>
+    </div>
+  </footer>
+
+  <!-- ═══ CTA FLOTTANT MOBILE ═══ -->
+  
+
+
+<script src="../site.js" defer></script>
+</body>
+</html>

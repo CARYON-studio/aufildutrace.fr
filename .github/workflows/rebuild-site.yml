@@ -1,0 +1,73 @@
+# Régénère les pages HTML du site après chaque publication d'article
+# depuis Sveltia CMS (/admin).
+#
+# Sveltia n'écrit qu'un fichier Markdown dans content/coin-des-curieux/.
+# Sans ce workflow, l'article existe dans le dépôt mais n'apparaît jamais
+# sur la page « Le coin des curieux » : c'est generate.py qui l'y insère.
+#
+# Prérequis (voir 04_SCRIPTS/cms-auth-worker/DEPLOIEMENT.md, étape 4) :
+# Settings → Actions → General → Workflow permissions → Read and write.
+
+name: Régénérer le site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'build/**'
+      - 'img/**'
+  workflow_dispatch:        # permet aussi de le lancer à la main
+
+concurrency:
+  group: rebuild-site
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installer les dépendances
+        run: pip install markdown
+
+      - name: Reconstruire l'arbre du gabarit
+        # tree.pkl est un fichier dérivé (il est dans .gitignore) : il doit être
+        # reconstruit à partir de template.html à chaque exécution.
+        working-directory: build
+        run: python parse.py
+
+      - name: Régénérer les 9 pages
+        working-directory: build
+        run: python generate.py
+
+      - name: Contrôle de sécurité — le formulaire de contact est toujours là
+        # Garde-fou : le formulaire Brevo a déjà été perdu une fois par une
+        # régénération. Si ce test échoue, on ne publie rien.
+        run: |
+          grep -q 'data-contact-form' contact/index.html \
+            || { echo "::error::Le formulaire de contact a disparu de contact/index.html — publication annulée."; exit 1; }
+          grep -q 'name="prenom"' contact/index.html \
+            || { echo "::error::Les champs du formulaire ont disparu — publication annulée."; exit 1; }
+
+      - name: Publier les changements
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "Aucun changement à publier."
+            exit 0
+          fi
+          git add -A
+          git commit -m "Régénération automatique du site (nouvel article)"
+          git push
