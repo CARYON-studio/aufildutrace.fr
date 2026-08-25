@@ -16,6 +16,13 @@ with open(os.path.join(os.path.dirname(__file__), 'base.css'), encoding='utf-8')
 
 GOOGLE_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap">'
 
+# JSON-LD Person + LocalBusiness (ajout du 25/08/2026).
+# NOTE : adresse volontairement limitée a ville/CP/pays -- Beatrice a choisi
+# (06/07/2026, cf memoire projet) de ne PAS publier son adresse complete
+# hors page /mentions-legales/. Ne pas ajouter 'streetAddress' ici sans son
+# accord explicite : ce JSON-LD est inclus sur TOUTES les pages.
+JSONLD_ORG = '{\n  "@context": "https://schema.org",\n  "@graph": [\n    {\n      "@type": "LocalBusiness",\n      "@id": "https://aufildutrace.fr/#business",\n      "name": "Au fil du tracé",\n      "url": "https://aufildutrace.fr",\n      "image": "https://aufildutrace.fr/img/logo-trans.png",\n      "email": "aufildutrace@gmail.com",\n      "telephone": "+33782110029",\n      "address": {\n        "@type": "PostalAddress",\n        "addressLocality": "Corme-Écluse",\n        "postalCode": "17600",\n        "addressCountry": "FR"\n      },\n      "founder": {\n        "@type": "Person",\n        "@id": "https://aufildutrace.fr/#beatrice",\n        "name": "Béatrice Gouts Bourjac",\n        "jobTitle": "Graphothérapeute",\n        "hasCredential": {\n          "@type": "EducationalOccupationalCredential",\n          "recognizedBy": {\n            "@type": "Organization",\n            "name": "CNPG"\n          }\n        }\n      }\n    }\n  ]\n}'
+
 PAGE_META = {
     'accueil': {
         'route': '/', 'title': "Au fil du tracé — Béatrice Gouts Bourjac, graphothérapeute à Corme-Écluse (17)",
@@ -206,6 +213,7 @@ def build_doc(page_id, body_html, hover_rules, prefix):
 <meta property="og:description" content="{meta['description']}">
 <meta property="og:url" content="{canonical}">
 <meta name="color-scheme" content="light">
+<script type="application/ld+json">{JSONLD_ORG}</script>
 <style>
 {BASE_CSS}
 {hover_css}
