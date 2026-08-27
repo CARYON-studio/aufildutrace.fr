@@ -383,7 +383,7 @@ input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erre
 
   <!-- ═══ HEADER ═══ -->
   <header style="position:sticky;top:0;z-index:50;background:rgba(253,250,246,0.94);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid #efe6d9">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px clamp(16px,5vw,56px);max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px clamp(16px,5vw,56px);max-width:1180px;margin:0 auto;position:relative">
       <a href="#" sc-camel-on-click="{{ goAccueil }}" style="display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer">
         <img src="396b7db8-1f15-40c7-8d92-7882e53f4b17" alt="" style="height:46px;width:auto;display:block">
         <span style="line-height:1.15">
@@ -391,13 +391,17 @@ input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erre
           <span style="display:block;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--second);margin-top:2px">Graphothérapie</span>
         </span>
       </a>
-      <nav aria-label="Navigation principale" style="display:flex;align-items:center;gap:clamp(14px,2.4vw,32px);flex-wrap:wrap">
+      <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu" style="align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;min-height:44px;border-radius:12px;border:none;background:transparent;color:var(--olive);font-size:22px;line-height:1;cursor:pointer">
+        <span data-nav-toggle-icon aria-hidden="true">&#9776;</span>
+      </button>
+      <nav id="menu-principal" class="nav-principale" aria-label="Navigation principale" style="display:flex;align-items:center;gap:clamp(14px,2.4vw,32px);flex-wrap:wrap">
         <sc-for list="{{ navItems }}" as="nv" hint-placeholder-count="4">
           <a href="#" sc-camel-on-click="{{ nv.go }}"{{ nv.ariaCurrent }} style="font-size:14px;color:{{ nv.color }};text-decoration:none;letter-spacing:0.2px;padding:6px 2px;border-bottom:2px solid {{ nv.underline }};font-weight:{{ nv.weight }};cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;transition:color .2s ease,border-color .2s ease" style-hover="color:var(--olive);border-bottom-color:var(--terre)">{{ nv.label }}</a>
         </sc-for>
-        <a href="#" sc-camel-on-click="{{ goContact }}" style="background:var(--brun);color:#fff;padding:13px 22px;border-radius:30px;font-size:13px;font-weight:600;letter-spacing:0.3px;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;box-shadow:0 4px 14px rgba(107,69,72,0.30);transition:background .32s cubic-bezier(.33,0,.2,1),transform .32s cubic-bezier(.33,0,.2,1),box-shadow .32s cubic-bezier(.33,0,.2,1);cursor:pointer" style-hover="background:#5C3B3D;transform:translateY(-1px);box-shadow:0 10px 22px rgba(107,69,72,0.26),0 0 0 3px rgba(203,153,126,0.28)">Me contacter</a>
+        <a href="#" sc-camel-on-click="{{ goContact }}" class="nav-cta" style="background:var(--brun);color:#fff;padding:13px 22px;border-radius:30px;font-size:13px;font-weight:600;letter-spacing:0.3px;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;box-shadow:0 4px 14px rgba(107,69,72,0.30);transition:background .32s cubic-bezier(.33,0,.2,1),transform .32s cubic-bezier(.33,0,.2,1),box-shadow .32s cubic-bezier(.33,0,.2,1);cursor:pointer" style-hover="background:#5C3B3D;transform:translateY(-1px);box-shadow:0 10px 22px rgba(107,69,72,0.26),0 0 0 3px rgba(203,153,126,0.28)">Me contacter</a>
       </nav>
     </div>
+    <noscript><style>.nav-toggle{display:none !important}.nav-principale{display:flex !important}@media (max-width:1023px){.nav-principale{position:static !important;flex-wrap:wrap !important}[data-screen-label]>header{position:static !important}}</style></noscript>
   </header>
 
   <main id="contenu" tabindex="-1">
@@ -719,7 +723,7 @@ input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erre
       </div>
     </section>
     <section style="max-width:900px;margin:0 auto;padding:clamp(36px,5vw,56px) clamp(16px,5vw,56px)">
-      <div style="display:flex;flex-direction:column;gap:26px;font-size:16.5px;color:var(--corps)">
+      <div class="qsj-bio" style="display:flex;flex-direction:column;gap:26px;font-size:16.5px;color:var(--corps)">
         <p data-reveal="">Avant de me consacrer à l'accompagnement des personnes, j'ai travaillé plusieurs années dans un laboratoire pharmaceutique. Cette première expérience professionnelle a nourri mon goût pour la rigueur et l'attention portée aux détails, des qualités que je retrouve aujourd'hui dans ma pratique.</p>
         <p data-reveal="">J'accompagne les personnes dans les étapes importantes de leur parcours de vie. De l'insertion professionnelle à la graphothérapie, un même fil conducteur guide ma pratique : proposer un accompagnement bienveillant, personnalisé et respectueux de la singularité de chacun.</p>
         <p data-reveal="">Depuis 20 ans, je soutiens des personnes dans la construction de leur parcours professionnel. Depuis 7 ans, je me consacre notamment à l'accompagnement de personnes en situation de handicap dans l'élaboration de leur projet professionnel. Dans le cadre de cet emploi, je me suis formée aux différents troubles et handicaps rencontrés — DYS, TSA, TDAH, troubles moteurs — ce qui m'a permis de développer une compréhension fine des difficultés d'apprentissage, des enjeux liés à la confiance en soi, et de l'importance d'ajuster chaque suivi aux besoins spécifiques de la personne.</p>

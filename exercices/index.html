@@ -98,16 +98,38 @@ footer[data-footer-focus] a:focus-visible,footer[data-footer-focus] button:focus
 main[tabindex="-1"]:focus{outline:none}
 /* 1.4.8 Présentation visuelle (AAA) — 80 caractères par ligne maximum */
 main p,main li{max-width:62ch}
-/* 1.4.10 Redistribution / 2.4.11 Focus non masqué — l'en-tête collant occupait
-   193 à 251 px (24 à 31 % de l'écran) tant que la navigation passe à la ligne.
-   Elle ne tient sur une seule ligne (73 px) qu'à partir de 1024 px : en dessous,
-   l'en-tête défile normalement au lieu de rester collé. */
-@media (max-width:1023px){[data-screen-label]>header{position:static !important}}
+/* 1.4.10 Redistribution / 2.4.11 Focus non masqué — CORRECTIF REMPLACÉ le 27/08/2026
+   par le menu hamburger ci-dessous. Avant : l'en-tête collant occupait 193 à 251 px
+   (24 à 31 % de l'écran) sous 1024 px car la navigation passait à la ligne faute de
+   place, d'où une règle qui désactivait le collant sous ce seuil. Le menu hamburger
+   replie désormais la nav dans un panneau masqué par défaut : le header ne fait plus
+   qu'une ligne (~73 px) à toutes les largeurs, donc peut rester collant partout. Le
+   <noscript> dans le header réapplique l'ancien comportement (nav toujours visible,
+   header non collant) si JS est désactivé — voir bloc "Menu mobile" plus bas. */
+
+/* Menu mobile (hamburger) — 27/08/2026. Cible le bouton .nav-toggle et le panneau
+   .nav-principale ajoutés dans le header de template.html ; toggle géré par
+   initNavToggle() dans site.js (data-open sur <nav>, aria-expanded sur le bouton). */
+.nav-toggle{display:none}
+@media (max-width:1023px){
+  .nav-toggle{display:inline-flex !important}
+  .nav-principale{display:none !important;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column !important;align-items:stretch !important;gap:6px !important;
+    background:var(--creme);border-bottom:1px solid #efe6d9;
+    padding:10px clamp(16px,5vw,56px) 20px;max-height:calc(100vh - 73px);overflow-y:auto;
+    box-shadow:0 16px 34px rgba(61,90,62,0.14)}
+  .nav-principale[data-open="true"]{display:flex !important}
+  .nav-principale a{width:100% !important;justify-content:flex-start !important}
+  .nav-principale .nav-cta{justify-content:center !important;margin-top:6px}
+}
 /* 3.1.4 Abréviations (AAA) — sigles développés en info-bulle, sans toucher au texte visible.
    Retirer le border-bottom si le soulignement pointillé n'est pas souhaité. */
 abbr[title]{text-decoration:none;border-bottom:1px dotted currentColor;cursor:help}
 /* 3.3.1 / 4.1.2 — état d'erreur des champs, piloté par aria-invalid et non par le seul JS */
 input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erreur) !important}
+
+/* Texte justifié — bio page Qui suis-je uniquement (demande Béatrice, 27/08/2026) */
+.qsj-bio p{text-align:justify}
 
 [data-hv="hv1"]:hover{color:var(--olive) !important;border-bottom-color:var(--terre) !important}
 [data-hv="hv2"]:hover{color:var(--olive) !important;border-bottom-color:var(--terre) !important}
@@ -135,7 +157,7 @@ input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erre
 
   <!-- ═══ HEADER ═══ -->
   <header style="position:sticky;top:0;z-index:50;background:rgba(253,250,246,0.94);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid #efe6d9">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px clamp(16px,5vw,56px);max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px clamp(16px,5vw,56px);max-width:1180px;margin:0 auto;position:relative">
       <a href="../index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer">
         <img src="../img/logo-trans.png" alt="" style="height:46px;width:auto;display:block">
         <span style="line-height:1.15">
@@ -143,7 +165,10 @@ input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erre
           <span style="display:block;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--second);margin-top:2px">Graphothérapie</span>
         </span>
       </a>
-      <nav aria-label="Navigation principale" style="display:flex;align-items:center;gap:clamp(14px,2.4vw,32px);flex-wrap:wrap">
+      <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu" style="align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;min-height:44px;border-radius:12px;border:none;background:transparent;color:var(--olive);font-size:22px;line-height:1;cursor:pointer">
+        <span data-nav-toggle-icon aria-hidden="true">&#9776;</span>
+      </button>
+      <nav id="menu-principal" class="nav-principale" aria-label="Navigation principale" style="display:flex;align-items:center;gap:clamp(14px,2.4vw,32px);flex-wrap:wrap">
         
           <a href="../index.html" style="font-size:14px;color:#2E3025;text-decoration:none;letter-spacing:0.2px;padding:6px 2px;border-bottom:2px solid transparent;font-weight:400;cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;transition:color .2s ease,border-color .2s ease" data-hv="hv1">Accueil</a>
         
@@ -157,9 +182,10 @@ input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erre
         
           <a href="../faq/index.html" style="font-size:14px;color:#2E3025;text-decoration:none;letter-spacing:0.2px;padding:6px 2px;border-bottom:2px solid transparent;font-weight:400;cursor:pointer;min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;transition:color .2s ease,border-color .2s ease" data-hv="hv6">FAQ</a>
         
-        <a href="../contact/index.html" style="background:var(--brun);color:#fff;padding:13px 22px;border-radius:30px;font-size:13px;font-weight:600;letter-spacing:0.3px;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;box-shadow:0 4px 14px rgba(107,69,72,0.30);transition:background .32s cubic-bezier(.33,0,.2,1),transform .32s cubic-bezier(.33,0,.2,1),box-shadow .32s cubic-bezier(.33,0,.2,1);cursor:pointer" data-hv="hv7">Me contacter</a>
+        <a href="../contact/index.html" class="nav-cta" style="background:var(--brun);color:#fff;padding:13px 22px;border-radius:30px;font-size:13px;font-weight:600;letter-spacing:0.3px;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;box-shadow:0 4px 14px rgba(107,69,72,0.30);transition:background .32s cubic-bezier(.33,0,.2,1),transform .32s cubic-bezier(.33,0,.2,1),box-shadow .32s cubic-bezier(.33,0,.2,1);cursor:pointer" data-hv="hv7">Me contacter</a>
       </nav>
     </div>
+    <noscript><style>.nav-toggle{display:none !important}.nav-principale{display:flex !important}@media (max-width:1023px){.nav-principale{position:static !important;flex-wrap:wrap !important}[data-screen-label]>header{position:static !important}}</style></noscript>
   </header>
 
   <main id="contenu" tabindex="-1">

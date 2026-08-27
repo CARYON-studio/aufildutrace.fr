@@ -213,6 +213,55 @@
     });
   }
 
+  // ── Menu mobile (hamburger) ─────────────────────────────────────────────
+  // Ajouté le 27/08/2026 : sous 1024px, la nav se replie dans un panneau
+  // masqué par défaut (voir .nav-toggle/.nav-principale dans base.css). Sans
+  // JS, le <noscript> du header réapplique l'ancien comportement (nav toujours
+  // visible, en-tête non collant) — ne pas dépendre de ce script pour l'accès
+  // à la navigation.
+  function initNavToggle() {
+    var btn = document.querySelector('[data-nav-toggle]');
+    var nav = document.getElementById('menu-principal');
+    var icon = document.querySelector('[data-nav-toggle-icon]');
+    if (!btn || !nav) return;
+
+    function setOpen(open) {
+      nav.setAttribute('data-open', open ? 'true' : 'false');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      if (icon) icon.textContent = open ? '\u2715' : '\u2630';
+    }
+
+    btn.addEventListener('click', function () {
+      setOpen(nav.getAttribute('data-open') !== 'true');
+    });
+
+    // WCAG 2.1.2 : un menu ouvert au clavier doit pouvoir se refermer sans
+    // la souris, et le focus doit revenir sur le bouton qui l'a ouvert.
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.getAttribute('data-open') === 'true') {
+        setOpen(false);
+        btn.focus();
+      }
+    });
+
+    // Tap/clic en dehors du panneau ouvert : on referme, comme attendu sur
+    // ce type de menu.
+    document.addEventListener('click', function (e) {
+      if (nav.getAttribute('data-open') === 'true' && !nav.contains(e.target) && !btn.contains(e.target)) {
+        setOpen(false);
+      }
+    });
+
+    // Si on repasse au-dessus de 1024px pendant que le menu est ouvert (rotation
+    // d'écran, redimensionnement), le panneau redevient la barre de nav normale :
+    // repartir de l'état fermé plutôt que de garder data-open="true" pour rien.
+    var mq = window.matchMedia('(min-width: 1024px)');
+    function handleMq(e) { if (e.matches) setOpen(false); }
+    if (mq.addEventListener) mq.addEventListener('change', handleMq);
+    else if (mq.addListener) mq.addListener(handleMq); // Safari < 14
+  }
+
   // ── Formulaire de contact ────────────────────────────────────────────────
   // Le formulaire poste vers un Worker Cloudflare (voir 04_SCRIPTS/brevo-worker/)
   // qui relaie l'e-mail via l'API Brevo. La clé API Brevo reste côté serveur
@@ -303,6 +352,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     scheduleReveals();
+    initNavToggle();
     initFaq();
     initArticles();
     initForm();
