@@ -19,13 +19,32 @@ on:
       - 'img/**'
   workflow_dispatch:        # permet aussi de le lancer à la main
 
+# CORRECTIF (27/08/2026) — cancel-in-progress: true.
+# Avant : un run bloqué (ou juste lent) restait dans le groupe de concurrence
+# et TOUS les push suivants (nouvel article Sveltia, upload manuel dans
+# build/ ou img/) restaient à l'état "Queued" derrière lui, indéfiniment —
+# c'est ce qui ressemblait à un "timeout à 15 minutes" côté Béatrice/Emilien.
+# Avec cancel-in-progress: true, un nouveau push annule le run précédent au
+# lieu de faire la queue derrière lui. Sans risque ici : generate.py est
+# idempotent (régénère les 9 pages à partir de l'état actuel du dépôt), donc
+# annuler un run devenu obsolète pour repartir sur le tout dernier commit
+# est toujours correct.
 concurrency:
   group: rebuild-site
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   rebuild:
     runs-on: ubuntu-latest
+    # CORRECTIF (27/08/2026) — garde-fou de durée.
+    # Aucune limite n'était fixée : le timeout par défaut GitHub est de
+    # 360 minutes (6h). Un run réellement bloqué (ex. git push qui attend
+    # une main humaine, credentials mal chargés) consommait donc des heures
+    # de minutes Actions en silence, et bloquait le groupe de concurrence
+    # ci-dessus jusqu'à échouer. 10 minutes est largement suffisant : ce
+    # job ne fait que parser 1 template, régénérer 9 pages HTML et pousser
+    # un commit — quelques secondes en fonctionnement normal.
+    timeout-minutes: 10
     permissions:
       contents: write
 
