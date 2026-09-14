@@ -21,12 +21,12 @@ GOOGLE_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link
 # (06/07/2026, cf memoire projet) de ne PAS publier son adresse complete
 # hors page /mentions-legales/. Ne pas ajouter 'streetAddress' ici sans son
 # accord explicite : ce JSON-LD est inclus sur TOUTES les pages.
-JSONLD_ORG = '{\n  "@context": "https://schema.org",\n  "@graph": [\n    {\n      "@type": "LocalBusiness",\n      "@id": "https://aufildutrace.fr/#business",\n      "name": "Au fil du tracé",\n      "url": "https://aufildutrace.fr",\n      "image": "https://aufildutrace.fr/img/logo-trans.png",\n      "email": "aufildutrace@gmail.com",\n      "telephone": "+33782110029",\n      "address": {\n        "@type": "PostalAddress",\n        "addressLocality": "Corme-Écluse",\n        "postalCode": "17600",\n        "addressCountry": "FR"\n      },\n      "founder": {\n        "@type": "Person",\n        "@id": "https://aufildutrace.fr/#beatrice",\n        "name": "Béatrice Gouts Bourjac",\n        "jobTitle": "Graphothérapeute",\n        "hasCredential": {\n          "@type": "EducationalOccupationalCredential",\n          "recognizedBy": {\n            "@type": "Organization",\n            "name": "CNPG"\n          }\n        }\n      }\n    }\n  ]\n}'
+JSONLD_ORG = '{\n  "@context": "https://schema.org",\n  "@graph": [\n    {\n      "@type": "LocalBusiness",\n      "@id": "https://aufildutrace.fr/#business",\n      "name": "Au fil du tracé",\n      "url": "https://aufildutrace.fr",\n      "image": "https://aufildutrace.fr/img/logo-trans.png",\n      "email": "aufildutrace@gmail.com",\n      "telephone": "+33782110029",\n      "address": {\n        "@type": "PostalAddress",\n        "addressLocality": "Corme-Écluse",\n        "postalCode": "17600",\n        "addressCountry": "FR"\n      },\n      "areaServed": [{"@type": "City", "name": "Corme-Écluse"}, {"@type": "City", "name": "Saujon"}, {"@type": "City", "name": "Cozes"}, {"@type": "City", "name": "Saintes"}, {"@type": "City", "name": "Gémozac"}, {"@type": "City", "name": "Pons"}, {"@type": "City", "name": "Meursac"}, {"@type": "City", "name": "Royan"}, {"@type": "City", "name": "Le Gua"}, {"@type": "City", "name": "Semussac"}, {"@type": "City", "name": "Meschers-sur-Gironde"}, {"@type": "City", "name": "Saint-Romain-de-Benet"}, {"@type": "City", "name": "Saint-Georges-de-Didonne"}],\n      "founder": {\n        "@type": "Person",\n        "@id": "https://aufildutrace.fr/#beatrice",\n        "name": "Béatrice Gouts Bourjac",\n        "jobTitle": "Graphothérapeute",\n        "hasCredential": {\n          "@type": "EducationalOccupationalCredential",\n          "recognizedBy": {\n            "@type": "Organization",\n            "name": "CNPG"\n          }\n        }\n      }\n    }\n  ]\n}'
 
 PAGE_META = {
     'accueil': {
         'route': '/', 'title': "Au fil du tracé — Béatrice Gouts Bourjac, graphothérapeute à Corme-Écluse (17)",
-        'description': "Rééducation de l'écriture pour enfants, adolescents et adultes. Bilan graphomoteur et séances personnalisées à Corme-Écluse (17600), secteur Saintes, Gémozac, Pons.",
+        'description': "Rééducation de l'écriture pour enfants, adolescents et adultes. Bilan graphomoteur et séances à Corme-Écluse (17600) et alentours (Royan, Saintes...).",
     },
     'presentation': {
         'route': '/qui-suis-je/', 'title': "Qui suis-je ? — Béatrice Gouts Bourjac, graphothérapeute certifiée CNPG",
@@ -34,7 +34,7 @@ PAGE_META = {
     },
     'prestations': {
         'route': '/prestations/', 'title': "Prestations et tarifs — Bilan graphomoteur et séances | Au fil du tracé",
-        'description': "Bilan graphomoteur (110 €), séances enfant/adolescent (45 €) et adulte (50 €). Rééducation de l'écriture à Corme-Écluse, secteur Saintes, Gémozac, Pons.",
+        'description': "Bilan graphomoteur (110 €), séances enfant/adolescent (45 €) et adulte (50 €). Rééducation à Corme-Écluse et alentours (Royan, Saintes...).",
     },
     'exercices': {
         'route': '/exercices/', 'title': "Exercices d'écriture à faire à la maison | Au fil du tracé",
@@ -50,7 +50,7 @@ PAGE_META = {
     },
     'contact': {
         'route': '/contact/', 'title': "Contact — Prendre rendez-vous | Au fil du tracé, Corme-Écluse",
-        'description': "Une question, une demande de bilan ? Contactez Béatrice Gouts Bourjac, graphothérapeute à Corme-Écluse (17600).",
+        'description': "Une question, une demande de bilan ? Contactez Béatrice Gouts Bourjac, graphothérapeute à Corme-Écluse (17600) et alentours (Royan, Saintes...).",
     },
     'mentions': {
         'route': '/mentions-legales/', 'title': "Mentions légales | Au fil du tracé",
