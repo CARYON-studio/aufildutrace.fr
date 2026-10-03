@@ -1,8 +1,12 @@
 ---
 title: Ordinateur ou stylo ? Et pourquoi pas les deux ?
 date: 2026-09-21
-image: /img/articles/Photo PISA.png
+image: ''
 ---
+
+![](/img/articles/ordi%20ET%20stylo.jpg)
+
+
 
 Publiés le 8 septembre 2026, les résultats PISA 2025 (baptisés « PISA 2026 ») confirment un recul historique du niveau scolaire français : la France perd une place et se retrouve **27e sur 91** pays évalués, avec des scores en baisse de 16 points en mathématiques et de 18 points en compréhension de l'écrit, un niveau jamais aussi bas depuis 2000. La France reste toutefois dans la moyenne des pays de l'OCDE, dans un contexte de baisse générale observée dans de nombreux pays. Classement PISA 2026 France recule encore + 2.
 
