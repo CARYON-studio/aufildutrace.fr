@@ -1,7 +1,7 @@
 ---
 title: Ordinateur ou stylo ? Et pourquoi pas les deux ?
 date: 2026-09-21
-image: ''
+image: /img/articles/ordi ET stylo.jpg
 ---
 
 ![](/img/articles/ordi%20ET%20stylo.jpg)
