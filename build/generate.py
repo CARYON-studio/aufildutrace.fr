@@ -2,6 +2,7 @@
 # La source est 04_SCRIPTS/build/generate.py.
 # -*- coding: utf-8 -*-
 import sys, re, os, glob, html
+import urllib.parse
 sys.path.insert(0, os.path.dirname(__file__))
 import render, context
 from imgmap import IMG_MAP
@@ -150,6 +151,17 @@ def render_articles_section(articles, prefix):
             img_src = a['image'] if a['image'].startswith('http') else prefix + a['image'].lstrip('/')
             img_html = (f'<img loading="lazy" decoding="async" src="{img_src}" alt="" '
                          'style="width:100%;height:auto;border-radius:12px;margin-bottom:16px">')
+        # Vignette à côté du titre (demande Béatrice, oct. 2026) : on réutilise
+        # le champ "image" du CMS. alt="" car purement illustrative : le titre
+        # juste à côté donne déjà le nom du bouton aux lecteurs d'écran.
+        # Pas d'image -> pas de vignette (le titre occupe toute la largeur).
+        thumb_html = ''
+        if a['image']:
+            thumb_src = a['image'] if a['image'].startswith('http') else prefix + urllib.parse.quote(a['image'].lstrip('/'))
+            thumb_html = ('<span aria-hidden="true" style="display:block;flex:0 0 72px;width:72px;min-width:72px;height:72px;'
+                          'border-radius:10px;overflow:hidden;background:var(--peche)">'
+                          f'<img loading="lazy" decoding="async" src="{thumb_src}" alt="" width="72" height="72" '
+                          'style="display:block;width:100%;height:100%;max-width:none;object-fit:cover"></span>')
         date_html = ''
         if a['date_fr']:
             date_html = (f'<span style="display:block;font-size:12px;color:var(--second);'
@@ -158,9 +170,12 @@ def render_articles_section(articles, prefix):
         cards.append(f'''
           <div style="background:#fff;border:1px solid var(--bordure);border-radius:16px;overflow:hidden;transition:border-color .2s ease" data-article-item data-open="false">
             <button data-article-toggle aria-expanded="false" aria-controls="article-panel-{idx}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;text-align:left;padding:18px 22px;font-family:'Source Serif 4',serif;font-size:17.5px;color:var(--olive);min-height:44px">
-              <span>
-                <span style="display:block">{html.escape(a['title'])}</span>
-                {date_html}
+              <span style="display:flex;align-items:center;gap:16px;min-width:0">
+                {thumb_html}
+                <span style="flex:1 1 auto;min-width:0">
+                  <span style="display:block">{html.escape(a['title'])}</span>
+                  {date_html}
+                </span>
               </span>
               <span data-article-chevron style="font-size:20px;color:var(--brun);flex-shrink:0;transform:rotate(0deg);transition:transform .25s ease">+</span>
             </button>

@@ -20,4 +20,7 @@ IMG_MAP = {
     '5b849122-a068-4a7d-8fad-3b8fbb6ebdb9': '/favicon.ico',
     '57b3db0c-3090-4b77-a5d4-5d8271d818b4': '/img/favicon-32.png',
     'ab6a2a61-01fb-44e4-ab8d-a587ac6fd940': '/img/apple-touch-icon.png',
+    'e67e6394-c718-438b-b441-7422fb3b050f': '/img/beatrice-portrait.jpg',
+    '9a1c9e88-539a-4aee-96a6-a93c55698a1f': '/img/logo-accueil.png',
+    'b0876e85-3aa4-4997-a5a2-017629a71564': '/img/caryon-orbe.svg',
 }

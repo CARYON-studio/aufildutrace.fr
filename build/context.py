@@ -131,7 +131,8 @@ EXERCICES = [
   { 'num': '04', 'duree': '10 min', 'titre': 'Les suites alternées', 'but': 'gagner en rapidité de traitement.', 'texte': 'Chronomètre en main : recopier des suites de lettres puis de chiffres en alternant les couleurs. Variante avec des noms d’animaux ou de fruits.', 'pourquoi': 'Plus on repère l’information vite et précisément, plus on recopie efficacement.' },
 ]
 
-PHOTO_URL = '/img/beatrice-portrait.jpg'
+# UUID rebasé en chemin relatif par apply_images() (voir imgmap.py)
+PHOTO_URL = 'e67e6394-c718-438b-b441-7422fb3b050f'  # /img/beatrice-portrait.jpg
 TELEPHONE = '07 82 11 00 29'
 DATE_MAJ = '15 août 2026'
 
