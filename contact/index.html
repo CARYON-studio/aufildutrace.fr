@@ -155,9 +155,9 @@ input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erre
 [data-hv="hv5"]:hover{color:var(--olive) !important;border-bottom-color:var(--terre) !important}
 [data-hv="hv6"]:hover{color:var(--olive) !important;border-bottom-color:var(--terre) !important}
 [data-hv="hv7"]:hover{background:#5C3B3D !important;transform:translateY(-1px) !important;box-shadow:0 10px 22px rgba(107,69,72,0.26),0 0 0 3px rgba(203,153,126,0.28) !important}
-[data-hv="hv8"]:hover{background:#5C3B3D !important;transform:translateY(-1px) !important;box-shadow:0 10px 22px rgba(107,69,72,0.26),0 0 0 3px rgba(203,153,126,0.28) !important}
-[data-hv="hv9"]:hover{color:var(--brun) !important;border-bottom-color:var(--brun) !important}
-[data-hv="hv10"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
+[data-hv="hv8"]:hover{color:var(--brun) !important;border-bottom-color:var(--brun) !important}
+[data-hv="hv9"]:hover{background:#5C3B3D !important;transform:translateY(-1px) !important;box-shadow:0 10px 22px rgba(107,69,72,0.26),0 0 0 3px rgba(203,153,126,0.28) !important}
+[data-hv="hv10"]:hover{color:var(--brun) !important;border-bottom-color:var(--brun) !important}
 [data-hv="hv11"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
 [data-hv="hv12"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
 [data-hv="hv13"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
@@ -167,7 +167,8 @@ input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erre
 [data-hv="hv17"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
 [data-hv="hv18"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
 [data-hv="hv19"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
-[data-hv="hv20"]:hover{color:#fff !important;text-decoration-color:#fff !important}
+[data-hv="hv20"]:hover{color:#fff !important;text-decoration:underline !important;text-underline-offset:4px !important}
+[data-hv="hv21"]:hover{color:#fff !important;text-decoration-color:#fff !important}
 </style>
 </head>
 <body data-anim="on" data-sprigs="on" data-contraste="off">
@@ -276,6 +277,9 @@ input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erre
         </div>
       </div>
       <div style="background:#fff;border:1px solid var(--bordure);border-radius:22px;padding:clamp(24px,3vw,36px);box-shadow:0 16px 40px rgba(107,112,92,0.09)">
+        <noscript>
+          <p style="font-size:15.5px;color:var(--corps);line-height:1.6;margin-bottom:18px">Pour envoyer ce message, activez JavaScript. Sinon, écrivez directement à <a href="mailto:aufildutrace@gmail.com" style="color:var(--olive);font-weight:600;display:inline-flex;align-items:center;min-height:44px;padding:6px 2px;text-decoration:none;border-bottom:1.5px solid var(--rose);transition:color .3s cubic-bezier(.33,0,.2,1),border-color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv8">aufildutrace@gmail.com</a>.</p>
+        </noscript>
         <form data-contact-form method="post" action="https://aufildutrace-contact.purple-block-fb2e.workers.dev" novalidate>
           <h2 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:clamp(22px,3vw,26px);margin-bottom:20px">Écrivez-moi</h2>
           <div style="display:flex;flex-direction:column;gap:14px">
@@ -297,9 +301,9 @@ input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erre
             </label>
             <!-- Champ piège anti-spam : invisible pour une personne, rempli par la plupart des robots -->
             <input type="text" name="site_web" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-            <button type="submit" style="background:var(--brun);color:#fff;border:none;border-radius:34px;padding:15px 32px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 8px 22px rgba(107,69,72,0.32);transition:background .32s cubic-bezier(.33,0,.2,1),transform .32s cubic-bezier(.33,0,.2,1),box-shadow .32s cubic-bezier(.33,0,.2,1);min-height:48px" data-hv="hv8">Envoyer ma question</button>
+            <button type="submit" style="background:var(--brun);color:#fff;border:none;border-radius:34px;padding:15px 32px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 8px 22px rgba(107,69,72,0.32);transition:background .32s cubic-bezier(.33,0,.2,1),transform .32s cubic-bezier(.33,0,.2,1),box-shadow .32s cubic-bezier(.33,0,.2,1);min-height:48px" data-hv="hv9">Envoyer ma question</button>
             <p data-form-error hidden role="alert" style="font-size:14px;color:var(--erreur);line-height:1.6">Une erreur est survenue lors de l'envoi. Vous pouvez réessayer, ou m'écrire directement à <a href="mailto:aufildutrace@gmail.com" style="color:var(--erreur);text-decoration:underline">aufildutrace@gmail.com</a>.</p>
-            <p style="font-size:12.5px;color:var(--second);line-height:1.6">Vos coordonnées servent uniquement à vous répondre, puis sont supprimées sous 12 mois. Votre message est transmis par le service Brevo. <a href="../politique-de-confidentialite/index.html" style="color:var(--olive);cursor:pointer;display:inline-flex;align-items:center;min-height:44px;padding:6px 2px;text-decoration:none;border-bottom:1.5px solid var(--rose);transition:color .3s cubic-bezier(.33,0,.2,1),border-color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv9">En savoir plus sur vos droits</a>.</p>
+            <p style="font-size:12.5px;color:var(--second);line-height:1.6">Vos coordonnées servent uniquement à vous répondre, puis sont supprimées sous 12 mois. Votre message est transmis par le service Brevo. <a href="../politique-de-confidentialite/index.html" style="color:var(--olive);cursor:pointer;display:inline-flex;align-items:center;min-height:44px;padding:6px 2px;text-decoration:none;border-bottom:1.5px solid var(--rose);transition:color .3s cubic-bezier(.33,0,.2,1),border-color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv10">En savoir plus sur vos droits</a>.</p>
           </div>
         </form>
         <div data-form-sent hidden role="status" aria-live="polite" tabindex="-1" style="text-align:center;padding:12px 0">
@@ -332,28 +336,28 @@ input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erre
         <div style="display:flex;flex-direction:column;gap:4px;font-size:15px">
           <p style="color:#EFEDE4">Corme-Écluse (17600)</p>
           <p style="color:#EFEDE4;font-size:14px;line-height:1.6;max-width:280px">Séances à domicile et en établissement, selon la zone géographique.</p>
-          <a href="tel:0782110029" style="color:#EFEDE4;text-decoration:none;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv10">07 82 11 00 29</a>
-          <a href="mailto:aufildutrace@gmail.com" style="color:#EFEDE4;text-decoration:none;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv11">aufildutrace@gmail.com</a>
+          <a href="tel:0782110029" style="color:#EFEDE4;text-decoration:none;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv11">07 82 11 00 29</a>
+          <a href="mailto:aufildutrace@gmail.com" style="color:#EFEDE4;text-decoration:none;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv12">aufildutrace@gmail.com</a>
         </div>
       </div>
       <div>
         <h2 style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--peche);margin-bottom:18px;font-weight:600">Le site</h2>
         <div style="display:flex;flex-direction:column;gap:4px;font-size:15px">
           
-            <a href="../index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv12">Accueil</a>
+            <a href="../index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv13">Accueil</a>
           
-            <a href="../qui-suis-je/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv13">Qui suis-je ?</a>
+            <a href="../qui-suis-je/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv14">Qui suis-je ?</a>
           
-            <a href="../prestations/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv14">Prestations</a>
+            <a href="../prestations/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv15">Prestations</a>
           
-            <a href="../exercices/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv15">Exercices</a>
+            <a href="../exercices/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv16">Exercices</a>
           
-            <a href="../le-coin-des-curieux/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv16">Le coin des curieux</a>
+            <a href="../le-coin-des-curieux/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv17">Le coin des curieux</a>
           
-            <a href="../faq/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv17">FAQ</a>
+            <a href="../faq/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv18">FAQ</a>
           
-          <a href="../mentions-legales/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv18">Mentions légales</a>
-          <a href="../politique-de-confidentialite/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv19">Politique de confidentialité</a>
+          <a href="../mentions-legales/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv19">Mentions légales</a>
+          <a href="../politique-de-confidentialite/index.html" style="color:#EFEDE4;text-decoration:none;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;min-height:44px;transition:color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv20">Politique de confidentialité</a>
         </div>
       </div>
     </div>
@@ -362,7 +366,7 @@ input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erre
       <span>Site sans cookie de suivi</span>
     </div>
     <p style="max-width:1180px;margin:0 auto;padding:0 clamp(16px,5vw,56px) clamp(18px,3vw,28px);font-size:14px;color:#EFEDE4">Graphothérapeute intervenant à Saujon, Cozes, Saintes, Gémozac, Pons, Meursac, Royan, Le Gua, Semussac, Meschers-sur-Gironde, Saint-Romain-de-Benet, Saint-Georges-de-Didonne et leurs alentours.</p>
-    <p style="max-width:1180px;margin:0 auto;padding:0 clamp(16px,5vw,56px) clamp(14px,2.5vw,22px);display:flex;align-items:center;flex-wrap:wrap;font-size:13px;color:#EFEDE4">Site conçu par<a href="https://caryonstudio.fr/" aria-label="Site conçu par CARYON" style="display:inline-flex;align-items:center;gap:4px;min-height:44px;margin-left:8px;color:#EFEDE4;letter-spacing:.08em;text-decoration:underline;text-decoration-color:#FFE8D6;text-decoration-thickness:1px;text-underline-offset:4px;transition:color .3s cubic-bezier(.33,0,.2,1),text-decoration-color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv20"><img src="../img/caryon-orbe.svg" alt="" width="48" height="48" style="width:48px;height:48px;flex:none;display:block;margin:-2px -8px -2px -10px">CARYON</a></p>
+    <p style="max-width:1180px;margin:0 auto;padding:0 clamp(16px,5vw,56px) clamp(14px,2.5vw,22px);display:flex;align-items:center;flex-wrap:wrap;font-size:13px;color:#EFEDE4">Site conçu par<a href="https://caryonstudio.fr/" aria-label="Site conçu par CARYON" style="display:inline-flex;align-items:center;gap:4px;min-height:44px;margin-left:8px;color:#EFEDE4;letter-spacing:.08em;text-decoration:underline;text-decoration-color:#FFE8D6;text-decoration-thickness:1px;text-underline-offset:4px;transition:color .3s cubic-bezier(.33,0,.2,1),text-decoration-color .3s cubic-bezier(.33,0,.2,1)" data-hv="hv21"><img src="../img/caryon-orbe.svg" alt="" width="48" height="48" style="width:48px;height:48px;flex:none;display:block;margin:-2px -8px -2px -10px">CARYON</a></p>
   </footer>
 
   <!-- ═══ CTA FLOTTANT MOBILE ═══ -->
