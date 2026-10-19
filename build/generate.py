@@ -15,7 +15,32 @@ except ImportError:
 with open(os.path.join(os.path.dirname(__file__), 'base.css'), encoding='utf-8') as f:
     BASE_CSS = f.read()
 
-GOOGLE_FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap">'
+# Polices auto-hébergées dans /fonts/ (19/10/2026, conformité RGPD) :
+# plus aucune requête vers les serveurs de polices de Google.
+# Fichiers .woff2 issus de Fontsource (sous-ensembles latin + latin-ext),
+# licences OFL dans /fonts/. Les @font-face sont injectés en tête du <style>
+# de chaque page avec le bon préfixe relatif ('./' ou '../').
+_LATIN = 'U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD'
+_LATIN_EXT = 'U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF'
+_FONTS = [
+    ('Plus Jakarta Sans', 'plus-jakarta-sans', [('normal', 400), ('normal', 500), ('normal', 600), ('normal', 700), ('italic', 400)]),
+    ('Source Serif 4', 'source-serif-4', [('normal', 400), ('normal', 500), ('italic', 400)]),
+]
+
+def font_faces(prefix):
+    rules = []
+    for family, slug, styles in _FONTS:
+        for style, weight in styles:
+            for subset, urange in (('latin-ext', _LATIN_EXT), ('latin', _LATIN)):
+                rules.append(
+                    f"@font-face{{font-family:'{family}';font-style:{style};font-weight:{weight};font-display:swap;"
+                    f"src:url('{prefix}fonts/{slug}-{subset}-{weight}-{style}.woff2') format('woff2');unicode-range:{urange}}}"
+                )
+    return '\n'.join(rules)
+
+def font_preloads(prefix):
+    return (f'<link rel="preload" href="{prefix}fonts/plus-jakarta-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>'
+            f'<link rel="preload" href="{prefix}fonts/source-serif-4-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>')
 
 # JSON-LD Person + LocalBusiness (ajout du 25/08/2026).
 # NOTE : adresse volontairement limitée a ville/CP/pays -- Beatrice a choisi
@@ -214,7 +239,7 @@ def build_doc(page_id, body_html, hover_rules, prefix):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{GOOGLE_FONTS}
+{font_preloads(prefix)}
 <link rel="icon" href="{prefix}favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="{prefix}img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="{prefix}img/apple-touch-icon.png">
@@ -230,6 +255,7 @@ def build_doc(page_id, body_html, hover_rules, prefix):
 <meta name="color-scheme" content="light">
 <script type="application/ld+json">{JSONLD_ORG}</script>
 <style>
+{font_faces(prefix)}
 {BASE_CSS}
 {hover_css}
 </style>
