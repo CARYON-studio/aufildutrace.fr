@@ -1,7 +1,7 @@
 ---
 title: Quel est votre stylo préféré ?
 date: 2026-10-26
-image: https://media.licdn.com/dms/image/v2/D4E1FAQGVC2k-ltqzCw/feedshare-document-images_1920/B4EaEwn1FoI8Ao-/1/1791817110973?e=1793836800&v=beta&t=lQ3ilBh78dhwfq_oDWHDsS5et7jgla9sQn9AqK7KuNA
+image: /img/articles/pasted-image-1793814490150.png
 ---
 
 Stylo bille, roller ou plume : et si le choix du stylo changeait la façon d’écrire de votre enfant ?
