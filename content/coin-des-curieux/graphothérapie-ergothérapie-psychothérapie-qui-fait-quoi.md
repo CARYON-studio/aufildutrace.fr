@@ -1,7 +1,7 @@
 ---
 title: 'Graphothérapie, ergothérapie, psychothérapie : qui fait quoi ?'
 date: 2026-11-02
-image: C:\Users\aufil\OneDrive\Desktop\BABOU\BABOU\SITE INTERNET\ARTICLES BLOG\3 approches différences photo.png
+image: /img/articles/pasted-image-1793814365988.png
 ---
 
 **Trois métiers, trois approches… et non, ils ne se sont pas simplement disputé le même préfixe en « thérapie » !**
