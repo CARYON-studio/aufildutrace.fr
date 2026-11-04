@@ -49,7 +49,7 @@ collections:
         # Pas de saisie d'adresse : uniquement l'envoi d'un fichier ou la médiathèque,
         # pour que chaque image soit hébergée dans img/articles (correctif 04/11/2026).
         choose_url: false
-        hint: "Cliquez sur « Choisir une image », puis envoyez la photo depuis votre ordinateur. Ne collez pas d'adresse d'image (LinkedIn, Facebook, dossier de votre ordinateur) : elle ne s'afficherait pas pour vos visiteurs. Laissez vide si vous n'avez pas d'image."
+        hint: "Glissez la photo dans le cadre, ou cliquez sur « Parcourir » pour la choisir sur votre ordinateur. « Coller l'image » marche aussi si vous avez copié l'image elle-même (pas son adresse). Une photo vue sur LinkedIn ou Facebook : enregistrez-la d'abord sur votre ordinateur. Laissez vide si vous n'avez pas d'image."
       - label: "Contenu de l'article"
         name: "body"
         widget: "markdown"
