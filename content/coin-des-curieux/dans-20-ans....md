@@ -1,7 +1,7 @@
 ---
 title: Dans 20 ans...
 date: 2026-10-23
-image: /img/articles/pasted-image-1793814268088.png
+image: /img/articles/pasted-image-1793814523465.png
 ---
 
 Dans 20 ans, les enfants écriront ils encore à la main ?
