@@ -46,7 +46,10 @@ collections:
         name: "image"
         widget: "image"
         required: false
-        hint: "Une photo ou illustration pour l'article. Laissez vide si vous n'en avez pas."
+        # Pas de saisie d'adresse : uniquement l'envoi d'un fichier ou la médiathèque,
+        # pour que chaque image soit hébergée dans img/articles (correctif 04/11/2026).
+        choose_url: false
+        hint: "Cliquez sur « Choisir une image », puis envoyez la photo depuis votre ordinateur. Ne collez pas d'adresse d'image (LinkedIn, Facebook, dossier de votre ordinateur) : elle ne s'afficherait pas pour vos visiteurs. Laissez vide si vous n'avez pas d'image."
       - label: "Contenu de l'article"
         name: "body"
         widget: "markdown"
