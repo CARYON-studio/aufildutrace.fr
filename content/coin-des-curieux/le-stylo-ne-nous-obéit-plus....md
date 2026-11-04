@@ -1,7 +1,7 @@
 ---
 title: Le stylo ne nous obéit plus...
 date: 2026-10-23
-image: https://media.licdn.com/dms/image/v2/D4E1FAQHaqTYzzguyoA/feedshare-document-images_1280/B4EaEwpuK3GwAU-/1/1791817606517?e=1793836800&v=beta&t=8MNS94npwYgKOKygLOor4Zze862JVEXxV8JWH1qEmBA
+image: /img/articles/pasted-image-1793814400651.png
 ---
 
 Le matin, l’écriture est impeccable. Le soir, on dirait que le stylo ne nous obéit plus ! Pourquoi ?
