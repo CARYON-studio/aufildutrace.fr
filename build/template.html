@@ -1507,7 +1507,7 @@ class Component extends DCLogic {
       telephone,
       telHref: 'tel:' + telephone.replace(/\s/g, ''),
       prixBilanSuffixe: prix ? ' · 110 €' : '',
-      prixSeanceSuffixe: prix ? ' · dès 45 €' : '',
+      prixSeanceSuffixe: prix ? ' · 45 € enfant / adolescent, 50 € adulte' : '',
       showAtelier: this.props.afficherAtelier ?? true,
       showStickyCta: (this.props.ctaMobileFlottant ?? true) && this.state.isMobile && p !== 'contact' && p !== 'mentions' && p !== 'confidentialite',
 
@@ -1564,7 +1564,7 @@ class Component extends DCLogic {
         { tag: 'Chez un adulte', titre: 'Un besoin d\u2019efficacité', items: ['Vous vous relisez difficilement', 'Vous préparez un concours ou un examen', 'Votre entourage fait des remarques sur votre écriture'] },
       ],
       tarifs: [
-        { prix: '110 €', label: 'Bilan graphomoteur', detail: 'Entretien et passage des tests (1 h 30 à 2 h). Évaluation à l’échelle d’Ajuriaguerra (un test de référence pour mesurer l’écriture). Compte-rendu écrit envoyé par mail.' },
+        { prix: '110 €', label: 'Bilan graphomoteur — enfant, adolescent ou adulte', detail: 'Entretien et passage des tests (1 h 30 à 2 h). Évaluation à l’échelle d’Ajuriaguerra (un test de référence pour mesurer l’écriture). Compte-rendu écrit envoyé par mail.' },
         { prix: '45 €', label: 'Séance — enfant / adolescent', detail: '45 min + 5-10 min de restitution avec le parent.' },
         { prix: '50 €', label: 'Séance — adulte', detail: '45 min de rééducation de l\u2019écriture.' },
       ],

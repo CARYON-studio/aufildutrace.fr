@@ -119,7 +119,7 @@ SIGNES = [
 ]
 
 TARIFS = [
-  { 'prix': '110 €', 'label': 'Bilan graphomoteur', 'detail': 'Entretien et passage des tests (1 h 30 à 2 h). Évaluation à l’échelle d’Ajuriaguerra (un test de référence pour mesurer l’écriture). Compte-rendu écrit envoyé par mail.' },
+  { 'prix': '110 €', 'label': 'Bilan graphomoteur — enfant, adolescent ou adulte', 'detail': 'Entretien et passage des tests (1 h 30 à 2 h). Évaluation à l’échelle d’Ajuriaguerra (un test de référence pour mesurer l’écriture). Compte-rendu écrit envoyé par mail.' },
   { 'prix': '45 €', 'label': 'Séance — enfant / adolescent', 'detail': '45 min + 5-10 min de restitution avec le parent.' },
   { 'prix': '50 €', 'label': 'Séance — adulte', 'detail': '45 min de rééducation de l’écriture.' },
 ]
@@ -203,7 +203,7 @@ def build_context(page):
         'telephone': TELEPHONE, 'telHref': 'tel:' + TELEPHONE.replace(' ', ''),
         'dateMaj': DATE_MAJ,
         'prixBilanSuffixe': ' · 110 €' if prix else '',
-        'prixSeanceSuffixe': ' · dès 45 €' if prix else '',
+        'prixSeanceSuffixe': ' · 45 € enfant / adolescent, 50 € adulte' if prix else '',
         'showAtelier': True,
         'showStickyCta': False,
         'formSent': False, 'formNotSent': True,
