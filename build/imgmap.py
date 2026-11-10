@@ -1,5 +1,5 @@
-# ⚠️ FICHIER GENERE par 04_SCRIPTS/build-et-sync.py — NE PAS EDITER.
-# La source est 04_SCRIPTS/build/imgmap.py.
+# Source unique : ce dossier build/ du dépôt (04_SCRIPTS est obsolète depuis le 05/11/2026,
+# voir build/README-GENERE.md). Après modification : python parse.py && python generate.py
 IMG_MAP = {
     '396b7db8-1f15-40c7-8d92-7882e53f4b17': '/img/logo-trans.png',
     '2de40eec-923e-4607-9477-b5bbf7281ee6': '/img/hero-enfants-v2.jpg',

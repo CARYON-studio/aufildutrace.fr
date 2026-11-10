@@ -1,5 +1,5 @@
-# ⚠️ FICHIER GENERE par 04_SCRIPTS/build-et-sync.py — NE PAS EDITER.
-# La source est 04_SCRIPTS/build/render.py.
+# Source unique : ce dossier build/ du dépôt (04_SCRIPTS est obsolète depuis le 05/11/2026,
+# voir build/README-GENERE.md). Après modification : python parse.py && python generate.py
 import re, pickle
 
 with open('tree.pkl','rb') as f:

@@ -1,5 +1,5 @@
-# ⚠️ FICHIER GENERE par 04_SCRIPTS/build-et-sync.py — NE PAS EDITER.
-# La source est 04_SCRIPTS/build/generate.py.
+# Source unique : ce dossier build/ du dépôt (04_SCRIPTS est obsolète depuis le 05/11/2026,
+# voir build/README-GENERE.md). Après modification : python parse.py && python generate.py
 # -*- coding: utf-8 -*-
 import sys, re, os, glob, html
 import urllib.parse
@@ -91,9 +91,6 @@ PAGE_META = {
 # Copie "canonique CI" de ce pipeline : ce dossier build/ vit DANS le repo
 # publie (racine = dossier parent de build/), pour que GitHub Actions puisse le
 # lancer apres chaque publication d'article via Sveltia CMS.
-#
-# ⚠️ CE FICHIER EST GENERE PAR 04_SCRIPTS/build-et-sync.py — NE PAS L'EDITER.
-# La source est 04_SCRIPTS/build/generate.py.
 BUILD_DIR = os.path.dirname(os.path.abspath(__file__))
 OUT_ROOT = os.path.dirname(BUILD_DIR)  # racine du repo = racine du site publie
 
