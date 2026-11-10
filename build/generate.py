@@ -62,9 +62,9 @@ PAGE_META = {
         'route': '/prestations/', 'title': "Prestations et tarifs — Bilan graphomoteur et séances | Au fil du tracé",
         'description': "Bilan graphomoteur (110 €), séances enfant/adolescent (45 €) et adulte (50 €). Rééducation à Corme-Écluse et alentours (Royan, Saintes...).",
     },
-    'exercices': {
-        'route': '/exercices/', 'title': "Exercices d'écriture à faire à la maison | Au fil du tracé",
-        'description': "Quatre exercices simples pour progresser en écriture entre les séances : posture, contrôle de la main, lettres liées, rapidité.",
+    'calligraphie': {
+        'route': '/calligraphie/', 'title': "Calligraphie Brush — Ateliers pour adultes et seniors | Au fil du tracé",
+        'description': "Ateliers de calligraphie Brush en petits groupes, pour adultes et seniors : découvrir le geste, jouer avec les lettres et créer des cartes personnalisées.",
     },
     'coin': {
         'route': '/le-coin-des-curieux/', 'title': "Le coin des curieux — Pourquoi l'écriture compte | Au fil du tracé",

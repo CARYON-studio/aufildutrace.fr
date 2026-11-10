@@ -891,36 +891,30 @@ input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--erre
   </div>
   </sc-if>
 
-  <!-- ═══════════ PAGE EXERCICES ═══════════ -->
-  <sc-if value="{{ showExercices }}" hint-placeholder-val="{{ false }}">
-  <div data-screen-label="Exercices">
+  <!-- ═══════════ PAGE CALLIGRAPHIE ═══════════ -->
+  <sc-if value="{{ showCalligraphie }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Calligraphie">
+    <!-- Texte de Béatrice (« Argumentaire calligraphie brush.docx », validé le 05/11/2026).
+         Pas d'image tant que la photo n'est pas validée : aucun emplacement vide. -->
     <section style="background:linear-gradient(180deg,var(--peche) 0%,var(--creme) 100%);padding:clamp(48px,7vw,80px) clamp(16px,5vw,56px) clamp(40px,5vw,60px);text-align:center">
-      <span style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--second);font-weight:600">À essayer à la maison</span>
-      <h1 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:clamp(30px,4.4vw,46px);line-height:1.15;margin:12px auto 16px;max-width:760px">Quelques exercices pour mieux écrire</h1>
-      <p style="font-size:clamp(16px,2vw,18px);color:var(--second);max-width:620px;margin:0 auto">Un aperçu de ce que nous travaillons en séance. En accompagnement, les exercices sont personnalisés selon l'âge et les objectifs.</p>
+      <span style="font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--second);font-weight:600">Nouvelle activité complémentaire</span>
+      <h1 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:clamp(30px,4.4vw,46px);line-height:1.15;margin:12px auto 16px;max-width:760px">La calligraphie Brush, l’art d’écrire autrement</h1>
+      <p style="font-size:clamp(16px,2vw,18px);color:var(--second);max-width:620px;margin:0 auto">Moderne et créative, la calligraphie Brush consiste à dessiner les lettres à l’aide d’un feutre à pointe pinceau, en jouant sur les pleins, les déliés et les mouvements du geste.</p>
     </section>
-    <section style="max-width:1180px;margin:0 auto;padding:clamp(36px,5vw,56px) clamp(16px,5vw,56px)">
-      <img loading="lazy" decoding="async" data-reveal="" src="adee3b9f-b0f0-4648-9075-f0a58bbd9567" alt="Exercices de graphothérapie : motricité fine, précision, fluidité" style="width: 100%; max-height: 100%; object-fit: cover; object-position: 50% 42%; border-radius: 22px; box-shadow: 0 18px 44px rgba(107,112,92,0.12); display: block; margin-bottom: clamp(30px,4vw,48px); height: 100%">
+    <section style="max-width:860px;margin:0 auto;padding:clamp(36px,5vw,56px) clamp(16px,5vw,56px)">
       <div data-reveal="" style="background:#fff;border:1px solid var(--bordure);border-radius:24px;padding:clamp(24px,3vw,40px);box-shadow:0 14px 36px rgba(107,112,92,0.09)">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,4vw,48px);align-items:center">
-          <div style="display:flex;justify-content:center">
-            <img loading="lazy" decoding="async" src="0b43f369-fd19-493d-bc88-2f73063a1f85" alt="Fiche « Une bonne posture » : pieds à plat, dos droit, avant-bras à angle droit, cahier incliné sous l'avant-bras" style="width:100%;max-width:400px;height:auto;border-radius:16px;box-shadow:0 12px 30px rgba(107,112,92,0.14);display:block">
-          </div>
-          <div>
-            <span style="display:inline-block;background:var(--peche);color:var(--brunh);font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 15px;border-radius:20px;margin-bottom:14px">La fiche à imprimer</span>
-            <h2 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:clamp(24px,3.4vw,32px);line-height:1.2;margin-bottom:14px">Une bonne posture pour bien écrire</h2>
-            <p style="font-size:15.5px;color:var(--corps);margin-bottom:14px">Pieds à plat au sol. Dos droit. Avant-bras posé sur le bureau, à angle droit. Cahier légèrement incliné, glissé sous l'avant-bras. Une bonne posture aide à mieux se concentrer, à écrire plus facilement et à éviter la fatigue.</p>
-          </div>
-        </div>
+        <p style="font-size:15.5px;color:var(--corps);margin-bottom:14px">Formée et certifiée en calligraphie, je propose des ateliers destinés aux adultes et aux seniors, en petits groupes, au sein d’associations ou d’établissements accueillant des personnes âgées.</p>
+        <p style="font-size:15.5px;color:var(--corps);margin-bottom:14px">Ces ateliers invitent à redécouvrir le plaisir du geste, à jouer avec les lettres et les mots, et à réaliser de jolies créations personnalisées dans une ambiance conviviale et bienveillante.</p>
+        <p style="font-size:15.5px;color:var(--corps);margin-bottom:22px">Chaque atelier est adapté au public, au rythme et aux envies des participants.</p>
+        <p style="font-size:15.5px;color:var(--olive);font-weight:600;margin-bottom:10px">Des ateliers pour :</p>
+        <ul style="list-style:disc;padding-left:22px;font-size:15.5px;color:var(--corps);display:flex;flex-direction:column;gap:8px">
+          <li>Découvrir les bases de la calligraphie.</li>
+          <li>Expérimenter différentes formes de lettres et de tracés.</li>
+          <li>Créer une carte, un message ou un souvenir personnalisé.</li>
+          <li>Partager un moment de détente et de créativité.</li>
+        </ul>
       </div>
-      <div data-reveal="" style="margin-top:clamp(28px,4vw,40px);background:#fff;border:1px solid var(--bordure);border-radius:24px;padding:clamp(24px,3vw,40px);box-shadow:0 14px 36px rgba(107,112,92,0.09)">
-        <h2 style="font-family:'Source Serif 4',serif;font-weight:400;color:var(--olive);font-size:clamp(22px,3vw,28px);text-align:center;margin-bottom:6px">La planche d'exercices</h2>
-        <p style="font-size:14.5px;color:var(--second);text-align:center;max-width:520px;margin:0 auto 22px">Quatre activités ludiques à faire à la maison pour mieux écrire. À télécharger et imprimer.</p>
-        <div style="background:var(--creme);border-radius:16px;padding:clamp(14px,2vw,22px);display:flex;justify-content:center">
-          <img loading="lazy" decoding="async" src="dce5e969-24d5-466a-b51a-c2c5addfc9c3" alt="Planche d'exercices : 4 activités pour mieux écrire (contrôler sa main, bonne posture, lettres liées, suites alternées)" style="width:100%;max-width:620px;height:auto;border-radius:12px;box-shadow:0 12px 30px rgba(107,112,92,0.14);display:block">
-        </div>
-      </div>
-      <p style="text-align:center;font-size:15px;color:var(--second);margin-top:clamp(28px,4vw,40px);max-width:560px;margin-left:auto;margin-right:auto">Petits exercices, grands progrès : l'important, c'est la régularité. Une question sur un exercice ? <a href="#" sc-camel-on-click="{{ goContact }}" style="color:var(--olive);font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--rose);cursor:pointer;display:inline-block;min-height:44px;padding:9px 3px;line-height:26px;transition:color .3s cubic-bezier(.33,0,.2,1),border-color .3s cubic-bezier(.33,0,.2,1)" style-hover="color:var(--brun);border-bottom-color:var(--brun)">Écrivez-moi</a>.</p>
+      <p style="text-align:center;font-size:15px;color:var(--second);margin-top:clamp(28px,4vw,40px);max-width:560px;margin-left:auto;margin-right:auto">Vous souhaitez organiser un atelier ? <a href="#" sc-camel-on-click="{{ goContact }}" style="color:var(--olive);font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--rose);cursor:pointer;display:inline-block;min-height:44px;padding:9px 3px;line-height:26px;transition:color .3s cubic-bezier(.33,0,.2,1),border-color .3s cubic-bezier(.33,0,.2,1)" style-hover="color:var(--brun);border-bottom-color:var(--brun)">Contactez-moi</a> pour construire une proposition adaptée à votre établissement.</p>
     </section>
   </div>
   </sc-if>
@@ -1441,7 +1435,7 @@ class Component extends DCLogic {
       ['accueil', 'Accueil'],
       ['presentation', 'Qui suis-je ?'],
       ['prestations', 'Prestations'],
-      ['exercices', 'Exercices'],
+      ['calligraphie', 'Calligraphie'],
       ['coin', 'Le coin des curieux'],
       ['faq', 'FAQ'],
     ];
@@ -1481,14 +1475,14 @@ class Component extends DCLogic {
       showAccueil: p === 'accueil',
       showPresentation: p === 'presentation',
       showPrestations: p === 'prestations',
-      showExercices: p === 'exercices',
+      showCalligraphie: p === 'calligraphie',
       showCoin: p === 'coin',
       showFaq: p === 'faq',
       showContact: p === 'contact',
       showMentions: p === 'mentions',
       showConfidentialite: p === 'confidentialite',
       goAccueil: mk('accueil'), goPresentation: mk('presentation'),
-      goPrestations: mk('prestations'), goExercices: mk('exercices'),
+      goPrestations: mk('prestations'), goCalligraphie: mk('calligraphie'),
       goFaq: mk('faq'), goContact: mk('contact'), goCoin: mk('coin'),
       goMentions: mk('mentions'), goConfidentialite: mk('confidentialite'),
       navItems, faqItems,
@@ -1568,12 +1562,6 @@ class Component extends DCLogic {
         { prix: '110 €', label: 'Bilan graphomoteur — enfant, adolescent ou adulte', detail: 'Entretien et passage des tests (1 h 30 à 2 h). Évaluation à l’échelle d’Ajuriaguerra (un test de référence pour mesurer l’écriture). Compte-rendu écrit envoyé par mail.' },
         { prix: '45 €', label: 'Séance — enfant / adolescent', detail: '45 min + 5-10 min de restitution avec le parent.' },
         { prix: '50 €', label: 'Séance — adulte', detail: '45 min de rééducation de l\u2019écriture.' },
-      ],
-      exercices: [
-        { num: '01', duree: '10 min', titre: 'Je contrôle ma main', but: 'bien maîtriser sa main pour écrire.', texte: 'Avec un morceau de pâte à modeler : former une petite boule en la faisant tourner entre les doigts, puis un boudin en ouvrant et fermant les doigts. Recommencer 2 fois.', pourquoi: 'Ces gestes entraînent le cerveau à mieux contrôler les doigts qui tiennent le crayon.' },
-        { num: '02', duree: '5 min', titre: 'Une bonne posture', but: 'écrire sans se fatiguer.', texte: 'Pieds à plat, dos droit, jambes à angle droit. Avant-bras sur le bureau, cahier légèrement incliné, glissé sous l\u2019avant-bras.', pourquoi: 'Une bonne posture aide la main et le corps à mieux écrire, et évite la fatigue.' },
-        { num: '03', duree: '20 min', titre: 'Les lettres liées', but: 'écrire en cursive sans lever le crayon.', texte: 'Tracer des mots comme « tulipe », « tempête », « humilité » en liant les lettres, puis s\u2019entraîner avec de petites phrases amusantes.', pourquoi: 'Lever le crayon ralentit l\u2019écriture : les lettres liées la rendent plus fluide et plus rapide.' },
-        { num: '04', duree: '10 min', titre: 'Les suites alternées', but: 'gagner en rapidité de traitement.', texte: 'Chronomètre en main : recopier des suites de lettres puis de chiffres en alternant les couleurs. Variante avec des noms d\u2019animaux ou de fruits.', pourquoi: 'Plus on repère l\u2019information vite et précisément, plus on recopie efficacement.' },
       ],
     };
   }

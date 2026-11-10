@@ -83,7 +83,7 @@ FAQ_GROUPS = [
 
 PAGES = [
   ('accueil', 'Accueil'), ('presentation', 'Qui suis-je ?'), ('prestations', 'Prestations'),
-  ('exercices', 'Exercices'), ('coin', 'Le coin des curieux'), ('faq', 'FAQ'),
+  ('calligraphie', 'Calligraphie'), ('coin', 'Le coin des curieux'), ('faq', 'FAQ'),
 ]
 
 POUR_QUI_CARDS = [
@@ -124,13 +124,6 @@ TARIFS = [
   { 'prix': '50 €', 'label': 'Séance — adulte', 'detail': '45 min de rééducation de l’écriture.' },
 ]
 
-EXERCICES = [
-  { 'num': '01', 'duree': '10 min', 'titre': 'Je contrôle ma main', 'but': 'bien maîtriser sa main pour écrire.', 'texte': 'Avec un morceau de pâte à modeler : former une petite boule en la faisant tourner entre les doigts, puis un boudin en ouvrant et fermant les doigts. Recommencer 2 fois.', 'pourquoi': 'Ces gestes entraînent le cerveau à mieux contrôler les doigts qui tiennent le crayon.' },
-  { 'num': '02', 'duree': '5 min', 'titre': 'Une bonne posture', 'but': 'écrire sans se fatiguer.', 'texte': 'Pieds à plat au sol. Dos droit. Jambes à angle droit. Avant-bras sur le bureau. Cahier légèrement incliné, glissé sous l’avant-bras.', 'pourquoi': 'Une bonne posture aide la main et le corps à mieux écrire, et évite la fatigue.' },
-  { 'num': '03', 'duree': '20 min', 'titre': 'Les lettres liées', 'but': 'écrire en cursive sans lever le crayon.', 'texte': 'Tracer des mots comme « tulipe », « tempête », « humilité » en liant les lettres, puis s’entraîner avec de petites phrases amusantes.', 'pourquoi': 'Lever le crayon ralentit l’écriture : les lettres liées la rendent plus fluide et plus rapide.' },
-  { 'num': '04', 'duree': '10 min', 'titre': 'Les suites alternées', 'but': 'gagner en rapidité de traitement.', 'texte': 'Chronomètre en main : recopier des suites de lettres puis de chiffres en alternant les couleurs. Variante avec des noms d’animaux ou de fruits.', 'pourquoi': 'Plus on repère l’information vite et précisément, plus on recopie efficacement.' },
-]
-
 # UUID rebasé en chemin relatif par apply_images() (voir imgmap.py)
 PHOTO_URL = 'e67e6394-c718-438b-b441-7422fb3b050f'  # /img/beatrice-portrait.jpg
 TELEPHONE = '07 82 11 00 29'
@@ -138,7 +131,7 @@ DATE_MAJ = '15 août 2026'
 
 ROUTES = {
     'accueil': '/', 'presentation': '/qui-suis-je/', 'prestations': '/prestations/',
-    'exercices': '/exercices/', 'coin': '/le-coin-des-curieux/', 'faq': '/faq/',
+    'calligraphie': '/calligraphie/', 'coin': '/le-coin-des-curieux/', 'faq': '/faq/',
     'contact': '/contact/', 'mentions': '/mentions-legales/', 'confidentialite': '/politique-de-confidentialite/',
 }
 
@@ -185,11 +178,11 @@ def build_context(page):
     prix = True
     ctx = {
         'showAccueil': page == 'accueil', 'showPresentation': page == 'presentation',
-        'showPrestations': page == 'prestations', 'showExercices': page == 'exercices',
+        'showPrestations': page == 'prestations', 'showCalligraphie': page == 'calligraphie',
         'showCoin': page == 'coin', 'showFaq': page == 'faq', 'showContact': page == 'contact',
         'showMentions': page == 'mentions', 'showConfidentialite': page == 'confidentialite',
         'goAccueil': rel(page, 'accueil'), 'goPresentation': rel(page, 'presentation'),
-        'goPrestations': rel(page, 'prestations'), 'goExercices': rel(page, 'exercices'),
+        'goPrestations': rel(page, 'prestations'), 'goCalligraphie': rel(page, 'calligraphie'),
         'goFaq': rel(page, 'faq'), 'goContact': rel(page, 'contact'), 'goCoin': rel(page, 'coin'),
         'goMentions': rel(page, 'mentions'), 'goConfidentialite': rel(page, 'confidentialite'),
         'navItems': nav_items, 'faqGroups': faq_groups,
@@ -216,6 +209,5 @@ def build_context(page):
         'interetsEcriture': INTERETS,
         'signes': SIGNES,
         'tarifs': TARIFS,
-        'exercices': EXERCICES,
     }
     return ctx
