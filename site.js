@@ -267,6 +267,39 @@
   // qui relaie l'e-mail via l'API Brevo. La clé API Brevo reste côté serveur
   // (secret du Worker) — jamais exposée dans ce fichier ni dans le navigateur.
   var CONTACT_ENDPOINT = 'https://aufildutrace-contact.purple-block-fb2e.workers.dev';
+  // Anti-spam (16/11/2026) : Cloudflare Turnstile (clé publique, sans danger
+  // dans le navigateur). La clé secrète reste dans le Worker. Le script n'est
+  // chargé que sur la page contact.
+  var TURNSTILE_SITEKEY = '0x4AAAAAAGDDiCd-LXsvtQUa';
+  var turnstileWidgetId = null;
+
+  function loadTurnstile(form) {
+    var box = form.querySelector('[data-turnstile]');
+    if (!box) return;
+    window.onAufildutraceTurnstile = function () {
+      if (!window.turnstile) return;
+      turnstileWidgetId = window.turnstile.render(box, {
+        sitekey: TURNSTILE_SITEKEY,
+        language: 'fr',
+        theme: 'light',
+        size: 'flexible'
+      });
+    };
+    var s = document.createElement('script');
+    s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onAufildutraceTurnstile';
+    s.async = true;
+    s.defer = true;
+    document.head.appendChild(s);
+  }
+
+  function turnstileToken() {
+    if (!window.turnstile || turnstileWidgetId === null) return '';
+    return window.turnstile.getResponse(turnstileWidgetId) || '';
+  }
+
+  function resetTurnstile() {
+    if (window.turnstile && turnstileWidgetId !== null) window.turnstile.reset(turnstileWidgetId);
+  }
 
   function initForm() {
     var form = document.querySelector('[data-contact-form]');
@@ -275,6 +308,8 @@
     var errorBlock = form.querySelector('[data-form-error]');
     var submitBtn = form.querySelector('button[type="submit"]');
     var submitLabel = submitBtn ? submitBtn.textContent : '';
+    var loadedAt = Date.now();
+    loadTurnstile(form);
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -331,17 +366,34 @@
           prenom: prenom.value.trim(),
           email: email.value.trim(),
           telephone: telephone ? telephone.value.trim() : '',
-          message: message.value.trim()
+          message: message.value.trim(),
+          site_web: honeypot ? honeypot.value : '',
+          duree: Date.now() - loadedAt,
+          'cf-turnstile-response': turnstileToken()
         })
       })
         .then(function (res) {
+          if (res.status === 422) {
+            // Message refusé pour une raison que la personne peut corriger
+            // (ex. un lien dans le message) : on l'affiche sous le champ.
+            return res.json().catch(function () { return {}; }).then(function (data) {
+              var errEl = document.getElementById('err-message');
+              message.setAttribute('aria-invalid', 'true');
+              if (errEl) errEl.textContent = data.error || 'Merci de reformuler votre message.';
+              message.focus();
+              resetTurnstile();
+              throw { handled: true };
+            });
+          }
           if (!res.ok) throw new Error('Réponse serveur ' + res.status);
           form.hidden = true;
           // WCAG 4.1.3 : sans deplacement du focus, l'utilisateur de lecteur
           // d'ecran n'apprend jamais que son message est parti.
           if (sentBlock) { sentBlock.hidden = false; sentBlock.focus(); }
         })
-        .catch(function () {
+        .catch(function (err) {
+          if (err && err.handled) return;
+          resetTurnstile();
           if (errorBlock) errorBlock.hidden = false;
         })
         .finally(function () {
